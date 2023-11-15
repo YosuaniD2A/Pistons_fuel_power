@@ -1,0 +1,12 @@
+.collection-image{
+    width: 672px;
+    height: 310px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.layer-blur:hover{
+    backdrop-filter: blur(3px); /* Ajusta el valor de desenfoque según tus preferencias */
+    background-color: rgba(5, 5, 5, 0.151); /* Ajusta el color de fondo y la opacidad según tus preferencias */
+}
