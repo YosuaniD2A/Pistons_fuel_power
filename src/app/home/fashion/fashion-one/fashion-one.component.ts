@@ -32,16 +32,18 @@ export class FashionOneComponent implements OnInit {
   public ProductSliderConfig: any = ProductSlider;
 
   public sliders = [{
-    title: 'welcome to fashion',
-    subTitle: 'Men fashion',
+    title: 'welcome to Pistons Fuel Power',
+    subTitle: 'Rev Up Your Passion for Muscle Cars and Motorcycles!',
     color: 'text-light',
     image: 'assets/images/slider/moto1.jpg'
-  }, {
-    title: 'welcome to fashion',
-    subTitle: 'Women fashion',
-    color: 'text-dark',
-    image: 'assets/images/slider/car1.jpg'
-  }]
+  }, 
+  // {
+  //   title: '',
+  //   subTitle: '',
+  //   color: 'text-dark',
+  //   image: 'assets/images/slider/car1.jpg'
+  // }
+  ]
 
   // Collection banner
   public collections = [{

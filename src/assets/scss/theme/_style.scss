@@ -1044,11 +1044,11 @@ header {
     //     position: absolute;
     //     right: 3px;
     // }
-        &:after {
-            content: "\f107";
-            font-family: $font-awesome;
-            margin-left: 5px;
-        }
+        // &:after {
+        //     content: "\f107";
+        //     font-family: $font-awesome;
+        //     margin-left: 5px;
+        // }
 
     .onhover-show-div {
         top: 50px;
@@ -7305,14 +7305,14 @@ ngx-loading-bar {
 
 .ngx-slider {
     .ngx-slider-selection {
-        background: #ff4c3b !important;
+        background: $theme-deafult !important;
     }
 
     .ngx-slider-pointer {
         width: 22px !important;
         height: 22px !important;
         top: -10px !important;
-        background-color: #ff4c3b !important;
+        background-color: $theme-deafult !important;
 
         &:after {
             top: 50% !important;

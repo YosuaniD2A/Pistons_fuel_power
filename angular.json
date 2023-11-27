@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "multikart": {
+    "piston-fuel-power-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -28,14 +28,15 @@
               "rxjs/Subject",
               "rxjs/Subscription"
             ],
-            "outputPath": "dist/multikart/browser",
+            "outputPath": "dist/piston-fuel-power-frontend/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/_redirects"
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
@@ -85,18 +86,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "multikart:build"
+            "browserTarget": "piston-fuel-power-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "multikart:build:production"
+              "browserTarget": "piston-fuel-power-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "multikart:build"
+            "browserTarget": "piston-fuel-power-frontend:build"
           }
         },
         "test": {
@@ -120,18 +121,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "multikart:serve"
+            "devServerTarget": "piston-fuel-power-frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "multikart:serve:production"
+              "devServerTarget": "piston-fuel-power-frontend:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/multikart/server",
+            "outputPath": "dist/piston-fuel-power-frontend/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "sourceMap": true,
@@ -156,21 +157,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "multikart:build",
-            "serverTarget": "multikart:server"
+            "browserTarget": "piston-fuel-power-frontend:build",
+            "serverTarget": "piston-fuel-power-frontend:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "multikart:build:production",
-              "serverTarget": "multikart:server:production"
+              "browserTarget": "piston-fuel-power-frontend:build:production",
+              "serverTarget": "piston-fuel-power-frontend:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "multikart:build:production",
-            "serverTarget": "multikart:server:production",
+            "browserTarget": "piston-fuel-power-frontend:build:production",
+            "serverTarget": "piston-fuel-power-frontend:server:production",
             "routes": [
               "/"
             ]

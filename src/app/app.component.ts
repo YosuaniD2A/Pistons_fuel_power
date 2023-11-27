@@ -21,7 +21,7 @@ export class AppComponent {
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private loader: LoadingBarService, translate: TranslateService) {
       
-    // document.body.classList.toggle('dark')
+    document.body.classList.toggle('dark')
 
     if (isPlatformBrowser(this.platformId)) {
       translate.setDefaultLang('en');
