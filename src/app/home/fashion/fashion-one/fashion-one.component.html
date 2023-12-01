@@ -2,18 +2,17 @@
 <!-- <app-header-four [themeLogo]="themeLogo"></app-header-four> -->
 
 <!-- Home slider start-->
-<section class="pb-0">
-  <app-slider 
-    [sliders]="sliders" 
-    [textClass]="'text-center'"
-    [category]="'fashion'"
-    [buttonText]="'shop now'"> 
-  </app-slider>
+<section class="hero mb-5">
+  <!-- <app-slider [sliders]="sliders" [textClass]="'text-center'" [category]="'fashion'" [buttonText]="'shop now'">
+  </app-slider> -->
+  <video muted autoplay loop>
+    <source src="assets/video/video_banner_pfp.mp4" type="video/mp4">
+  </video>
 </section>
 <!-- Home slider End -->
 
 <!-- collection banner start-->
-<section class="pb-0">
+<section class="pb-5">
   <div class="container">
     <div class="title1 section-t-space pt-0">
       <h2 class="title-inner1">collections</h2>
@@ -23,8 +22,8 @@
         <div class="col-lg-6 offset-lg-3">
           <div class="product-para">
             <p class="text-center">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry, 
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+              Discover our handpicked collection of Motorcycle & Cars accessories and clothing, tailored for the
+              passionate riders. Let's hit the road together!
             </p>
           </div>
         </div>
@@ -43,7 +42,7 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
         </a>
       </div>
@@ -52,12 +51,32 @@
 </section>
 <!-- collection banner End -->
 
+<!-- News section start-->
+<!-- <section class="blog p-t-0">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="title1 section-t-space">
+          <h4>Recent Story</h4>
+          <h2 class="title-inner1">latest news</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-blog [blogs]="blog"></app-blog>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- News section End -->
+
 <!-- Product slider start-->
 <div class="title1 section-t-space">
-  <h4>Best sellers</h4>
-  <h2 class="title-inner1">top products</h2>
+  <!-- <h4>Best sellers</h4> -->
+  <h2 class="title-inner1">Selling Now</h2>
 </div>
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-6 offset-lg-3">
       <div class="product-para">
@@ -68,7 +87,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <section class="section-b-space p-t-0">
   <div class="container">
     <!-- <div class="row">
@@ -91,37 +110,36 @@
     </div> -->
     <div class="row">
       <div class="col">
-          <owl-carousel-o class="product-m no-arrow" [options]="ProductSliderConfig">
-            <ng-container *ngFor="let product of products | slice:0:16">
-                <ng-template carouselSlide>
-                <div class="product-box">
-                  <app-product-box-one 
-                    [product]="product" 
-                    [currency]="productService?.Currency"
-                    [onHowerChangeImage]="true"
-                    [cartModal]="true">
-                  </app-product-box-one>
-                </div>
-                </ng-template>
-            </ng-container>
-          </owl-carousel-o>
+        <owl-carousel-o class="product-m no-arrow" [options]="ProductSliderConfig">
+          <ng-container *ngFor="let product of products | slice:0:16">
+            <ng-template carouselSlide>
+              <div class="product-box">
+                <app-product-box-one [product]="product" [currency]="productService?.Currency"
+                  [onHowerChangeImage]="true" [cartModal]="true">
+                </app-product-box-one>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
       </div>
-  </div>
+    </div>
   </div>
 </section>
 <!-- Product slider End -->
 
 <!-- Parallax banner start-->
-<section class="p-0">
+<section class="pb-5">
+
   <div class="full-banner parallax-banner1 parallax text-center p-left "
     [ngStyle]="{'background-image': 'url(assets/images/parallax/paralax-1.jpg)'}">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="banner-contain ">
-            <h2>2023</h2>
-            <h3>fashion trends</h3>
-            <h4>special offer</h4>
+    <div class="layer_blur_parallax">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="banner-contain ">
+              <!-- <h2>2023</h2> -->
+              <h3>Find exclusive content on our Social Media</h3>
+            </div>
           </div>
         </div>
       </div>
@@ -132,26 +150,26 @@
 
 <!-- Tab product start-->
 <div class="title1 section-t-space">
-  <h4>exclusive products</h4>
-  <h2 class="title-inner1">special products</h2>
+  <!-- <h4>exclusive products</h4> -->
+  <h2 class="title-inner1">Graphics & Tees</h2>
 </div>
 <section class="section-b-space p-t-0">
   <div class="container">
     <div class="row">
       <div class="col theme-tab">
-        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="tabs tab-title justify-content-center nav nav-pills" >
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="tabs tab-title justify-content-center nav nav-pills">
           <li *ngFor="let collection of productCollections" [ngbNavItem]="collection">
             <a ngbNavLink>
-               {{ collection }}
+              {{ collection }}
             </a>
             <ng-template ngbNavContent>
               <div class="no-slider row">
-                  <ng-container *ngFor="let product of getCollectionProducts(collection) | slice:0:8">
-                      <div class="product-box">
-                          <app-product-box-one [product]="product" [currency]="productService?.Currency">
-                          </app-product-box-one>
-                      </div>
-                  </ng-container>
+                <ng-container *ngFor="let product of getCollectionProducts(collection) | slice:0:8">
+                  <div class="product-box">
+                    <app-product-box-one [product]="product" [currency]="productService?.Currency">
+                    </app-product-box-one>
+                  </div>
+                </ng-container>
               </div>
             </ng-template>
           </li>
@@ -164,35 +182,15 @@
 <!-- Tab product End -->
 
 <!-- services start-->
-<div class="container">
+<div class="container pb-5">
   <section class="service border-section small-section">
     <app-services></app-services>
   </section>
 </div>
 <!-- services End -->
 
-<!-- blog section start-->
-<section class="blog p-t-0">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="title1 section-t-space">
-          <h4>Recent Story</h4>
-          <h2 class="title-inner1">latest news</h2>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <app-blog [blogs]="blog"></app-blog>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- blog section End -->
-
 <!--  logo section start-->
-<section class="section-b-space">
+<!-- <section class="section-b-space pb-5">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -200,9 +198,9 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!--  logo section End-->
 
 <app-newsletter></app-newsletter>
-<app-footer-one></app-footer-one>
 
+<app-footer-one></app-footer-one>

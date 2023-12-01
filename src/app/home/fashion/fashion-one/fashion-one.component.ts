@@ -47,22 +47,22 @@ export class FashionOneComponent implements OnInit {
 
   // Collection banner
   public collections = [{
-    image: 'assets/images/collection/motor_cars/car2.jpg',
+    image: 'assets/images/collection/Motorcycles.jpeg',
     save: 'save 50%',
     color: 'text-light',
-    title: 'Classic cars'
+    title: 'Motorcycles'
   }, {
-    image: 'assets/images/collection//motor_cars/moto2.jpg',
+    image: 'assets/images/collection/Muscle_cars3.jpg',
     save: 'save 50%',
     color: 'text-light',
-    title: 'Classic motors'
+    title: 'Muscle Cars'
   },{
-    image: 'assets/images/collection//motor_cars/eng1.jpg',
+    image: 'assets/images/collection/Classic_cars.jpeg',
     save: 'save 50%',
     color: 'text-light',
-    title: 'Engines'
+    title: 'Classics'
   }, {
-    image: 'assets/images/collection//motor_cars/badge1.jpg',
+    image: 'assets/images/collection/motor_cars/badge1.jpg',
     save: 'save 50%',
     color: 'text-light',
     title: 'Badges'

@@ -208,7 +208,7 @@ button {
 
 section,
 .section-t-space {
-    padding-top: 70px;
+    // padding-top: 20px;
 }
 
 :focus {
@@ -293,7 +293,8 @@ form {
 }
 
 .section-b-space {
-    padding-bottom: 70px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .p-t-0 {
@@ -1084,8 +1085,8 @@ header {
 
 .onhover-div {
     position: relative;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-family: $font_0, $font_1;
 
     img,
@@ -1437,8 +1438,8 @@ header {
 
     .brand-logo {
         display: inline-block;
-        padding-top: 35px;
-        padding-bottom: 35px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     .menu-left {
@@ -3581,9 +3582,16 @@ header {
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
-    padding-top: 190px;
-    padding-bottom: 190px;
+    // padding-top: 190px;
+    // padding-bottom: 190px;
     background-position: center;
+
+    .layer_blur_parallax{
+        padding-top: 190px;
+        padding-bottom: 190px;
+        backdrop-filter: blur(3px); /* Ajusta el valor de desenfoque según tus preferencias */
+        background-color: rgba(5, 5, 5, 0.151);
+    }
 
     &.parallax-layout {
         padding-top: 350px;
@@ -3656,7 +3664,7 @@ header {
 
         h3 {
             font-size: 60px;
-            color: $font-color;
+            color: $white-5;
             text-transform: uppercase;
             font-weight: 700;
         }
@@ -5363,7 +5371,7 @@ footer {
     }
 
     .footer-logo {
-        margin-bottom: 18px;
+        margin-bottom: 0;
     }
 
     p {
@@ -5629,7 +5637,7 @@ footer {
 
 .footer-theme {
     .footer-logo {
-        margin-bottom: 18px;
+        margin-bottom: 0px;
     }
 
     .sub-title {
@@ -8076,6 +8084,21 @@ ngx-loading-bar {
 .blog {
     .title-inner1 {
         margin-bottom: 35px;
+    }
+}
+
+.hero{
+    min-height: 80vh;
+    position: relative;
+
+    video{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
     }
 }
 
@@ -13113,6 +13136,10 @@ body.rtl {
         }
 
         .footer-contant {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             p {
                 text-align: center;
             }
