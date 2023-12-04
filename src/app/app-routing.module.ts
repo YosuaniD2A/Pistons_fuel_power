@@ -7,7 +7,7 @@ import { PagesComponent } from './pages/pages.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home/fashion',
+    redirectTo: '/home/fashion',
     pathMatch: 'full'
   },
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '**', // Navigate to Home Page if not found any page
-    redirectTo: 'home/fashion',
+    redirectTo: '/home/fashion'
   },
 ];
 
