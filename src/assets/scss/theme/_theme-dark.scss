@@ -278,6 +278,17 @@ body {
             }
         }
     }
+    .accordion-button{
+        background-color: transparent;
+    }
+    .accordion-item{
+        background-color: transparent;
+        border-color: rgba($dark-border, 0.5); 
+
+        .accordion-button{
+            color: $white-5;
+        }
+    }
     .top-header {
         background-color: $dark-top;
         transition: all 0.3s ease;

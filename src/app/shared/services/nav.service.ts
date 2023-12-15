@@ -37,18 +37,16 @@ export class NavService {
 			title: 'home', type: 'link', active: false, path: '/home/fashion'
 		},
 		{
-			title: 'shop', type: 'link', active: false, path: '/shop/collection/infinitescroll'
-		},
-		{
 			title: 'collections', type: 'sub', active: false, children: [
-				{ path: '/shop/collection/infinitescroll', title: 'Classic cars', type: 'link' },
-				{ path: '/shop/collection/infinitescroll', title: 'Classic motors', type: 'link' },
-				{ path: '/shop/collection/infinitescroll', title: 'Engines', type: 'link' },
-				{ path: '/shop/collection/infinitescroll', title: 'Badges', type: 'link' }
+				{ path: '/shop/collection/infinitescroll', title: 'Motorcycles', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', title: 'Muscle cars', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', title: 'Classics', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', title: 'Badges', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', title: 'View all', type: 'link' }
 			]
 		},
 		{
-			title: 'Gallery', type: 'link', active: false, path: '/pages/portfolio/masonry/grid/three'
+			title: 'Gallery', type: 'link', active: false, path: '/pages/gallery/masonry/grid/three'
 		},
 		{
 			title: 'About us', type: 'link', active: false, path: '/pages/aboutus'

@@ -1,18 +1,22 @@
-<app-breadcrumb [title]="'Portfolio'" [breadcrumb]="'Portfolio'"></app-breadcrumb>
+<app-breadcrumb [title]="'Gallery'" [breadcrumb]="'Gallery'"></app-breadcrumb>
 <!-- section start -->
 <section class="filter-section">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="title1 ">
-                    <h2 class="title-inner1">portfolio</h2>
+                <div class="title1 mt-5">
+                    <h2 class="title-inner1">gallery</h2>
                 </div>
                 <div class="filter-container isotopeFilters">
                     <ul class="list-inline filter">
-                        <li [class.active]="galleryFilter == 'all'"><a href="javascript:void(0)" (click)="filter('all')">All </a></li>
-                        <li [class.active]="galleryFilter == 'fashion'"><a href="javascript:void(0)" (click)="filter('fashion')">Fashion</a></li>
-                        <li [class.active]="galleryFilter == 'shoes'"><a href="javascript:void(0)" (click)="filter('shoes')">Shoes</a></li>
-                        <li [class.active]="galleryFilter == 'watch'"><a href="javascript:void(0)" (click)="filter('watch')">Watch</a></li>
+                        <li [class.active]="galleryFilter == 'all'"><a href="javascript:void(0)"
+                                (click)="filter('all')">All </a></li>
+                        <li [class.active]="galleryFilter == 'muscle'"><a href="javascript:void(0)"
+                                (click)="filter('muscle')">Muscle</a></li>
+                        <li [class.active]="galleryFilter == 'motorcycle'"><a href="javascript:void(0)"
+                                (click)="filter('motorcycle')">Motorcycles</a></li>
+                        <li [class.active]="galleryFilter == 'classic'"><a href="javascript:void(0)"
+                                (click)="filter('classic')">Classic</a></li>
                     </ul>
                 </div>
             </div>
@@ -22,15 +26,23 @@
 <section class="portfolio-section pt-0 port-col zoom-gallery">
     <div class="container">
         <div class="row isotopeContainer">
-            <div class="col-lg-4 col-sm-6 isotopeSelector" [ngClass]="galleryFilter"  *ngFor="let image of Images">
+            <div class="col-lg-4 col-sm-6 isotopeSelector" [ngClass]="galleryFilter" *ngFor="let image of Images">
                 <div class="overlay">
                     <div class="border-portfolio">
                         <a href="javascript:void(0)">
-                            <img [src]="image.modal.img" class="img-fluid">
+                            <!-- <img [src]="image.modal.img" style="height: auto" class="img-fluid"> -->
+                            <img [src]="image.modal.img" (load)="imageCloaded()" (error)="cargarImagenPorDefecto(image)"
+                                style="height: auto" class="img-fluid" />
+                            <div *ngIf="mostrarImagenDeCarga && !imagenCargada" class="p-5" >
+                                <img src="assets/images/spinner_loader.gif"  alt="Cargando..."/>
+                            </div>
                         </a>
                     </div>
                 </div>
-           </div>
+                <!-- <div *ngIf="mostrarImagenDeCarga && !imagenCargada">
+                    <img src="assets/images/portfolio/1.jpg" alt="Cargando..." />
+                </div> -->
+            </div>
         </div>
     </div>
 </section>
