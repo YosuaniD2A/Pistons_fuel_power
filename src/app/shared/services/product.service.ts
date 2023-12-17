@@ -59,34 +59,34 @@ export class ProductService {
   */
 
   // Get Wishlist Items
-  public get wishlistItems(): Observable<Product[]> {
-    const itemsStream = new Observable(observer => {
-      observer.next(state.wishlist);
-      observer.complete();
-    });
-    return <Observable<Product[]>>itemsStream;
-  }
+  // public get wishlistItems(): Observable<Product[]> {
+  //   const itemsStream = new Observable(observer => {
+  //     observer.next(state.wishlist);
+  //     observer.complete();
+  //   });
+  //   return <Observable<Product[]>>itemsStream;
+  // }
 
   // Add to Wishlist
-  public addToWishlist(product): any {
-    const wishlistItem = state.wishlist.find(item => item.id === product.id)
-    if (!wishlistItem) {
-      state.wishlist.push({
-        ...product
-      })
-    }
-    this.toastrService.success('Product has been added in wishlist.');
-    localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
-    return true
-  }
+  // public addToWishlist(product): any {
+  //   const wishlistItem = state.wishlist.find(item => item.id === product.id)
+  //   if (!wishlistItem) {
+  //     state.wishlist.push({
+  //       ...product
+  //     })
+  //   }
+  //   this.toastrService.success('Product has been added in wishlist.');
+  //   localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+  //   return true
+  // }
 
   // Remove Wishlist items
-  public removeWishlistItem(product: Product): any {
-    const index = state.wishlist.indexOf(product);
-    state.wishlist.splice(index, 1);
-    localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
-    return true
-  }
+  // public removeWishlistItem(product: Product): any {
+  //   const index = state.wishlist.indexOf(product);
+  //   state.wishlist.splice(index, 1);
+  //   localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+  //   return true
+  // }
 
   /*
     ---------------------------------------------
@@ -95,34 +95,34 @@ export class ProductService {
   */
 
   // Get Compare Items
-  public get compareItems(): Observable<Product[]> {
-    const itemsStream = new Observable(observer => {
-      observer.next(state.compare);
-      observer.complete();
-    });
-    return <Observable<Product[]>>itemsStream;
-  }
+  // public get compareItems(): Observable<Product[]> {
+  //   const itemsStream = new Observable(observer => {
+  //     observer.next(state.compare);
+  //     observer.complete();
+  //   });
+  //   return <Observable<Product[]>>itemsStream;
+  // }
 
   // Add to Compare
-  public addToCompare(product): any {
-    const compareItem = state.compare.find(item => item.id === product.id)
-    if (!compareItem) {
-      state.compare.push({
-        ...product
-      })
-    }
-    this.toastrService.success('Product has been added in compare.');
-    localStorage.setItem("compareItems", JSON.stringify(state.compare));
-    return true
-  }
+  // public addToCompare(product): any {
+  //   const compareItem = state.compare.find(item => item.id === product.id)
+  //   if (!compareItem) {
+  //     state.compare.push({
+  //       ...product
+  //     })
+  //   }
+  //   this.toastrService.success('Product has been added in compare.');
+  //   localStorage.setItem("compareItems", JSON.stringify(state.compare));
+  //   return true
+  // }
 
   // Remove Compare items
-  public removeCompareItem(product: Product): any {
-    const index = state.compare.indexOf(product);
-    state.compare.splice(index, 1);
-    localStorage.setItem("compareItems", JSON.stringify(state.compare));
-    return true
-  }
+  // public removeCompareItem(product: Product): any {
+  //   const index = state.compare.indexOf(product);
+  //   state.compare.splice(index, 1);
+  //   localStorage.setItem("compareItems", JSON.stringify(state.compare));
+  //   return true
+  // }
 
   /*
     ---------------------------------------------

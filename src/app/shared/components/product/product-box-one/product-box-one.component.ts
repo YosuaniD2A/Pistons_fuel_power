@@ -64,12 +64,12 @@ export class ProductBoxOneComponent implements OnInit {
     this.productService.addToCart(product);
   }
 
-  addToWishlist(product: any) {
-    this.productService.addToWishlist(product);
-  }
+  // addToWishlist(product: any) {
+  //   this.productService.addToWishlist(product);
+  // }
 
-  addToCompare(product: any) {
-    this.productService.addToCompare(product);
-  }
+  // addToCompare(product: any) {
+  //   this.productService.addToCompare(product);
+  // }
 
 }

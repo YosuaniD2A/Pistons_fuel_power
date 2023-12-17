@@ -86,9 +86,9 @@ export class ProductLeftSidebarComponent implements OnInit {
   }
 
   // Add to Wishlist
-  addToWishlist(product: any) {
-    this.productService.addToWishlist(product);
-  }
+  // addToWishlist(product: any) {
+  //   this.productService.addToWishlist(product);
+  // }
 
   // Toggle Mobile Sidebar
   toggleMobileSidebar() {
