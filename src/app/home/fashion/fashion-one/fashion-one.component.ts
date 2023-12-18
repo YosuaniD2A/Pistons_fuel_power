@@ -18,10 +18,10 @@ export class FashionOneComponent implements OnInit {
 
   constructor(public productService: ProductService) {
     this.productService.getProducts.subscribe(response => {
-      this.products = response.filter(item => item.type == 'fashion');
-      // Get Product Collection
+      this.products = response.filter(item => item.type == 'T-shirt');
+      // Get Product Collection    
       this.products.filter((item) => {
-        item.collection.filter((collection) => {
+        item.collection.filter((collection) => {          
           const index = this.productCollections.indexOf(collection);
           if (index === -1) this.productCollections.push(collection);
         })
@@ -69,46 +69,46 @@ export class FashionOneComponent implements OnInit {
   }];
 
   // Blog
-  public blog = [{
-    image: 'assets/images/blog/1.jpg',
-    date: '25 January 2018',
-    title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-    by: 'John Dio'
-  }, {
-    image: 'assets/images/blog/2.jpg',
-    date: '26 January 2018',
-    title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-    by: 'John Dio'
-  }, {
-    image: 'assets/images/blog/3.jpg',
-    date: '27 January 2018',
-    title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-    by: 'John Dio'
-  }, {
-    image: 'assets/images/blog/4.jpg',
-    date: '28 January 2018',
-    title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-    by: 'John Dio'
-  }];
+  // public blog = [{
+  //   image: 'assets/images/blog/1.jpg',
+  //   date: '25 January 2018',
+  //   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+  //   by: 'John Dio'
+  // }, {
+  //   image: 'assets/images/blog/2.jpg',
+  //   date: '26 January 2018',
+  //   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+  //   by: 'John Dio'
+  // }, {
+  //   image: 'assets/images/blog/3.jpg',
+  //   date: '27 January 2018',
+  //   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+  //   by: 'John Dio'
+  // }, {
+  //   image: 'assets/images/blog/4.jpg',
+  //   date: '28 January 2018',
+  //   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+  //   by: 'John Dio'
+  // }];
 
   // Logo
-  public logo = [{
-    image: 'assets/images/logos/1.png',
-  }, {
-    image: 'assets/images/logos/2.png',
-  }, {
-    image: 'assets/images/logos/3.png',
-  }, {
-    image: 'assets/images/logos/4.png',
-  }, {
-    image: 'assets/images/logos/5.png',
-  }, {
-    image: 'assets/images/logos/6.png',
-  }, {
-    image: 'assets/images/logos/7.png',
-  }, {
-    image: 'assets/images/logos/8.png',
-  }];
+  // public logo = [{
+  //   image: 'assets/images/logos/1.png',
+  // }, {
+  //   image: 'assets/images/logos/2.png',
+  // }, {
+  //   image: 'assets/images/logos/3.png',
+  // }, {
+  //   image: 'assets/images/logos/4.png',
+  // }, {
+  //   image: 'assets/images/logos/5.png',
+  // }, {
+  //   image: 'assets/images/logos/6.png',
+  // }, {
+  //   image: 'assets/images/logos/7.png',
+  // }, {
+  //   image: 'assets/images/logos/8.png',
+  // }];
 
   ngOnInit(): void {
   }

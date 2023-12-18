@@ -26,7 +26,8 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
     public productService: ProductService) {
-    this.route.data.subscribe(response => this.product = response.data);
+    // this.route.data.subscribe(response => this.product = response.data);
+    this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
   }
 
   ngOnInit(): void {

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,from } from 'rxjs';
 import { map, startWith, delay } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../classes/product';
+import { environment } from 'src/environments/environment';
 
 const state = {
   products: JSON.parse(localStorage['products'] || '[]'),
@@ -31,20 +32,42 @@ export class ProductService {
   */
 
   // Product
-  private get products(): Observable<Product[]> {
-    this.Products = this.http.get<Product[]>('assets/data/products.json').pipe(map(data => data));
-    this.Products.subscribe(next => { localStorage['products'] = JSON.stringify(next) });
-    return this.Products = this.Products.pipe(startWith(JSON.parse(localStorage['products'] || '[]')));
+  private async products(): Promise<Product[]> {
+    try {
+      const response = await this.http.get<{ data: Product[] }>(`${environment.apiURL}/products/getAllFullProducts`).toPromise();
+      const products = response.data;
+  
+      localStorage['products'] = JSON.stringify(products);
+  
+      return products;
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al obtener productos:', error);
+      throw error;
+    }
   }
+  // private get products(): Observable<Product[]> {
+  //   this.Products = this.http.get<{ data: Product[] }>(`${environment.apiURL}/products/getAllFullProducts`).pipe(map(response => response.data));
+  //   this.Products.subscribe(next => { localStorage['products'] = JSON.stringify(next) });
+  //   return this.Products = this.Products.pipe(startWith(JSON.parse(localStorage['products'] || '[]')));
+  // }
+  // private get products(): Observable<Product[]> {
+  //   this.Products = this.http.get<Product[]>('assets/data/products.json').pipe(map(data => data));
+  //   this.Products.subscribe(next => { localStorage['products'] = JSON.stringify(next) });
+  //   return this.Products = this.Products.pipe(startWith(JSON.parse(localStorage['products'] || '[]')));
+  // }
 
   // Get Products
+  // public get getProducts(): Observable<Product[]> {
+  //   return this.products;
+  // }
   public get getProducts(): Observable<Product[]> {
-    return this.products;
+    return from(this.products());
   }
 
   // Get Products By Slug
-  public getProductBySlug(slug: string): Observable<Product> {
-    return this.products.pipe(map(items => { 
+  public getProductBySlug(slug: string): Observable<Product | undefined> {
+    return  from(this.products()).pipe(map(items => { 
       return items.find((item: any) => { 
         return item.title.replace(' ', '-') === slug; 
       }); 
@@ -217,7 +240,7 @@ export class ProductService {
 
   // Get Product Filter
   public filterProducts(filter: any): Observable<Product[]> {
-    return this.products.pipe(map(product => 
+    return from(this.products()).pipe(map(product => 
       product.filter((item: Product) => {
         if (!filter.length) return true
         const Tags = filter.some((prev) => { // Match Tags

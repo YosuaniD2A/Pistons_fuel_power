@@ -41,7 +41,7 @@
                         <ng-template carouselSlide [id]="i">
                             <div>
                               <img [defaultImage]="'assets/images/product/placeholder.jpg'" 
-                                   [lazyLoad]="image.src" 
+                                   [lazyLoad]="image.img_url" 
                                    [alt]="image.alt" class="img-fluid">
                             </div>
                         </ng-template>
@@ -54,7 +54,7 @@
                                 <ng-template carouselSlide [id]="i">
                                     <div class="owl-thumb" [class.active]="i == activeSlide">
                                       <img [defaultImage]="'assets/images/product/placeholder.jpg'" 
-                                           [lazyLoad]="image.src" 
+                                           [lazyLoad]="image.img_url" 
                                            [alt]="image.alt" class="img-fluid" 
                                            (click)="owlCar.to(activeSlide = i.toString())">
                                     </div>

@@ -11,7 +11,7 @@ import { ProductService } from '../../../services/product.service';
 export class ProductBoxVerticalSliderComponent implements OnInit {
 
   @Input() title: string = 'New Product'; // Default
-  @Input() type: string = 'fashion'; // Default Fashion
+  @Input() type: string = 'T-shirt'; // Default Fashion
 
   public products : Product[] = [];
 
@@ -26,4 +26,7 @@ export class ProductBoxVerticalSliderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  storeProduct(product: any){
+    localStorage['productDetail'] = JSON.stringify(product);
+  }
 }

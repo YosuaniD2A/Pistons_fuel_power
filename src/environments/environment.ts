@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   stripe_token: 'STRIPE_TOKEN',
-  paypal_token: 'PAYPAL_TOKEN'
+  paypal_token: 'PAYPAL_TOKEN',
+
+  // apiURL: 'localhost:3000/api/shop'
+  apiURL: 'https://pistonsfuelpowerbackend-production.up.railway.app/api/shop'
 };
 
 /*

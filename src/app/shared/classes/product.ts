@@ -25,6 +25,7 @@ export interface Variants {
     size?: string;
     color?: string;
     image_id?: number;
+    products_id?: number;
 }
 
 export interface Images {
@@ -33,4 +34,7 @@ export interface Images {
     alt?: string;
     src?: string;
     variant_id?: any[];
+    img_url?: string;
+    variants_id?: number;
+    images_id?: number;
 }
