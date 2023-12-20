@@ -1,7 +1,7 @@
 <div class="media d-flex align-items-center">
     <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">
         <img [defaultImage]="ImageSrc ? ImageSrc : 'assets/images/product/placeholder.jpg'" 
-             [lazyLoad]="ImageSrc ? ImageSrc : product.images[0].src"  
+             [lazyLoad]="ImageSrc ? ImageSrc : product.images[0].img_url"  
              class="img-fluid lazy-loading" alt="{{ product.images[0].alt }}">
     </a>
 	<div class="media-body align-self-center">

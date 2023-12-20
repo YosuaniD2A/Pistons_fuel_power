@@ -22,7 +22,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
   public minPrice: number = 0;
   public maxPrice: number = 1200;
   public tags: any[] = [];
-  public category: string;
+  public collection: string;
   public pageNo: number = 1;
   public paginate: any = {}; // Pagination use only
   public sortBy: string; // Sorting Order
@@ -32,42 +32,47 @@ export class CollectionInfinitescrollComponent implements OnInit {
   public addItemCount = 8;
 
   constructor(private route: ActivatedRoute, private router: Router,
-    private viewScroller: ViewportScroller, public productService: ProductService) {   
-      // Get Query params..
-      this.route.queryParams.subscribe(params => {
-        this.products = [];
-        this.finished = false;
+    private viewScroller: ViewportScroller, public productService: ProductService) {
+    // Get Query params..
+    this.route.queryParams.subscribe(params => {
+      this.products = [];
+      this.finished = false;
 
-        this.brands = params.brand ? params.brand.split(",") : [];
-        this.colors = params.color ? params.color.split(",") : [];
-        this.size  = params.size ? params.size.split(",")  : [];
-        this.minPrice = params.minPrice ? params.minPrice : this.minPrice;
-        this.maxPrice = params.maxPrice ? params.maxPrice : this.maxPrice;
-        this.tags = [...this.brands, ...this.colors, ...this.size]; // All Tags Array
-        
-        this.category = params.category ? params.category : null;
-        this.sortBy = params.sortBy ? params.sortBy : 'ascending';
+      this.brands = params.brand ? params.brand.split(",") : [];
+      this.colors = params.color ? params.color.split(",") : [];
+      this.size = params.size ? params.size.split(",") : [];
+      this.minPrice = params.minPrice ? params.minPrice : this.minPrice;
+      this.maxPrice = params.maxPrice ? params.maxPrice : this.maxPrice;
+      this.tags = [...this.brands, ...this.colors, ...this.size]; // All Tags Array
 
-        // Get Filtered Products..
-        this.productService.filterProducts(this.tags).subscribe(response => {
+      this.collection = params.collection ? params.collection : null;
+      this.sortBy = params.sortBy ? params.sortBy : 'ascending';
 
-          // All Products
-          this.all_products = response;
+      // Get Filtered Products..
+      this.productService.filterProducts(this.tags).subscribe(response => {
 
-          // Sorting Filter
-          this.all_products = this.productService.sortProducts(response, this.sortBy);
+        // All Products
+        this.all_products = response;
 
-          // Category Filter
-          if(params.category)
-            this.all_products = this.all_products.filter(item => item.type == this.category);
+        // Sorting Filter
+        this.all_products = this.productService.sortProducts(response, this.sortBy);
 
-          // Price Filter
-          this.all_products = this.all_products.filter(item => item.price >= this.minPrice && item.price <= this.maxPrice)
-    
-          this.addItems();
-          
-        })
+        // Category Filter
+        if (params.collection) {
+          if (this.collection === 'All')
+            this.all_products = this.all_products;
+          else
+            this.all_products = this.all_products.filter(item => item.collection == this.collection);
+        }
+
+
+        // Price Filter
+        this.all_products = this.all_products.filter(item => item.price >= this.minPrice && item.price <= this.maxPrice)
+
+        this.addItems();
+
       })
+    })
   }
 
   ngOnInit(): void {
@@ -75,7 +80,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
   }
 
   addItems() {
-    if(this.all_products.length == this.products.length){
+    if (this.all_products.length == this.products.length) {
       this.finished = true;
       return
     }
@@ -92,7 +97,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
   // Append filter value to Url
   updateFilter(tags: any) {
     tags.page = null; // Reset Pagination
-    this.router.navigate([], { 
+    this.router.navigate([], {
       relativeTo: this.route,
       queryParams: tags,
       queryParamsHandling: 'merge', // preserve the existing query params in the route
@@ -105,9 +110,9 @@ export class CollectionInfinitescrollComponent implements OnInit {
 
   // SortBy Filter
   sortByFilter(value) {
-    this.router.navigate([], { 
+    this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { sortBy: value ? value : null},
+      queryParams: { sortBy: value ? value : null },
       queryParamsHandling: 'merge', // preserve the existing query params in the route
       skipLocationChange: false  // do trigger navigation
     }).finally(() => {
@@ -118,18 +123,18 @@ export class CollectionInfinitescrollComponent implements OnInit {
 
   // Remove Tag
   removeTag(tag) {
-  
+
     this.brands = this.brands.filter(val => val !== tag);
     this.colors = this.colors.filter(val => val !== tag);
     this.size = this.size.filter(val => val !== tag);
 
-    let params = { 
-      brand: this.brands.length ? this.brands.join(",") : null, 
+    let params = {
+      brand: this.brands.length ? this.brands.join(",") : null,
       color: this.colors.length ? this.colors.join(",") : null,
       size: this.size.length ? this.size.join(",") : null
     }
 
-    this.router.navigate([], { 
+    this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
       queryParamsHandling: 'merge', // preserve the existing query params in the route
@@ -142,7 +147,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
 
   // Clear Tags
   removeAllTags() {
-    this.router.navigate([], { 
+    this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {},
       skipLocationChange: false  // do trigger navigation
@@ -152,7 +157,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
     });
   }
 
-  
+
 
   // Change Grid Layout
   updateGridLayout(value: string) {
@@ -162,7 +167,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
   // Change Layout View
   updateLayoutView(value: string) {
     this.layoutView = value;
-    if(value == 'list-view')
+    if (value == 'list-view')
       this.grid = 'col-lg-12';
     else
       this.grid = 'col-xl-3 col-md-6';

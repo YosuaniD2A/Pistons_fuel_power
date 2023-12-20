@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductSlider } from '../../../shared/data/slider';
 import { Product } from '../../../shared/classes/product';
 import { ProductService } from '../../../shared/services/product.service';
+import { CollectionService } from 'src/app/shared/services/collection.service';
+import { Collection } from 'src/app/shared/classes/collection';
 
 @Component({
   selector: 'app-fashion-one',
@@ -12,11 +14,13 @@ export class FashionOneComponent implements OnInit {
 
   public themeLogo: string = 'assets/images/icon/logo-13.png';
   
+  public collections: Collection[] = [];
+
   public products: Product[] = [];
   public productCollections: any[] = [];
   public active;
 
-  constructor(public productService: ProductService) {
+  constructor(public productService: ProductService, public collectionService: CollectionService) {
     this.productService.getProducts.subscribe(response => {
       this.products = response.filter(item => item.type == 'T-shirt');
       // Get Product Collection    
@@ -27,46 +31,52 @@ export class FashionOneComponent implements OnInit {
         })
       })
     });
+
+    this.collectionService.getCollections.subscribe(response => {
+      this.collections = response;
+      console.log(this.collections);
+    })
+
   }
 
   public ProductSliderConfig: any = ProductSlider;
 
-  public sliders = [{
-    title: 'welcome to Pistons Fuel Power',
-    subTitle: 'Rev Up Your Passion for Muscle Cars and Motorcycles!',
-    color: 'text-light',
-    image: 'assets/images/slider/moto1.jpg'
-  }, 
+  // public sliders = [{
+  //   title: 'welcome to Pistons Fuel Power',
+  //   subTitle: 'Rev Up Your Passion for Muscle Cars and Motorcycles!',
+  //   color: 'text-light',
+  //   image: 'assets/images/slider/moto1.jpg'
+  // }, 
   // {
   //   title: '',
   //   subTitle: '',
   //   color: 'text-dark',
   //   image: 'assets/images/slider/car1.jpg'
   // }
-  ]
+  // ]
 
   // Collection banner
-  public collections = [{
-    image: 'assets/images/collection/Motorcycles.jpeg',
-    save: 'save 50%',
-    color: 'text-light',
-    title: 'Motorcycles'
-  }, {
-    image: 'assets/images/collection/Muscle_cars3.jpg',
-    save: 'save 50%',
-    color: 'text-light',
-    title: 'Muscle Cars'
-  },{
-    image: 'assets/images/collection/Classic_cars.jpeg',
-    save: 'save 50%',
-    color: 'text-light',
-    title: 'Classics'
-  }, {
-    image: 'assets/images/collection/motor_cars/badge1.jpg',
-    save: 'save 50%',
-    color: 'text-light',
-    title: 'Badges'
-  }];
+  // public collectiones = [{
+  //   image: 'assets/images/collection/Motorcycles.jpeg',
+  //   save: 'save 50%',
+  //   color: 'text-light',
+  //   title: 'Motorcycles'
+  // }, {
+  //   image: 'assets/images/collection/Muscle_cars3.jpg',
+  //   save: 'save 50%',
+  //   color: 'text-light',
+  //   title: 'Muscle Cars'
+  // },{
+  //   image: 'assets/images/collection/Classic_cars.jpeg',
+  //   save: 'save 50%',
+  //   color: 'text-light',
+  //   title: 'Classics'
+  // }, {
+  //   image: 'assets/images/collection/motor_cars/badge1.jpg',
+  //   save: 'save 50%',
+  //   color: 'text-light',
+  //   title: 'Badges'
+  // }];
 
   // Blog
   // public blog = [{

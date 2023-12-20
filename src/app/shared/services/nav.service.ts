@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 // Menu
 export interface Menu {
 	path?: string;
+	param?: string,
 	title?: string;
 	type?: string;
 	megaMenu?: boolean;
@@ -38,11 +39,11 @@ export class NavService {
 		},
 		{
 			title: 'collections', type: 'sub', active: false, children: [
-				{ path: '/shop/collection/infinitescroll', title: 'Motorcycles', type: 'link' },
-				{ path: '/shop/collection/infinitescroll', title: 'Muscle cars', type: 'link' },
-				{ path: '/shop/collection/infinitescroll', title: 'Classics', type: 'link' },
-				{ path: '/shop/collection/infinitescroll', title: 'Badges', type: 'link' },
-				{ path: '/shop/collection/infinitescroll', title: 'View all', type: 'link' }
+				{ path: '/shop/collection/infinitescroll', param: 'Motorcycles', title: 'Motorcycles', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', param: 'Muscle cars', title: 'Muscle cars', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', param: 'Classics', title: 'Classics', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', param: 'Badges', title: 'Badges', type: 'link' },
+				{ path: '/shop/collection/infinitescroll', param: 'All', title: 'View all', type: 'link' }
 			]
 		},
 		{

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable,from } from 'rxjs';
+import { Observable,from, lastValueFrom } from 'rxjs';
 import { map, startWith, delay } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../classes/product';
@@ -34,7 +34,7 @@ export class ProductService {
   // Product
   private async products(): Promise<Product[]> {
     try {
-      const response = await this.http.get<{ data: Product[] }>(`${environment.apiURL}/products/getAllFullProducts`).toPromise();
+      const response = await lastValueFrom(this.http.get<{ data: Product[] }>(`${environment.apiURL}/products/getAllFullProducts`));
       const products = response.data;
   
       localStorage['products'] = JSON.stringify(products);
