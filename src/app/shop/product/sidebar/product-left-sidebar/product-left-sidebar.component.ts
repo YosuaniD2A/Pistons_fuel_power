@@ -16,6 +16,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   public counter: number = 1;
   public activeSlide: any = 0;
   public selectedSize: any;
+  public selectedColor: string;
   public mobileSidebar: boolean = false;
   public active = 1;
 
@@ -26,12 +27,18 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
     public productService: ProductService) {
-    // this.route.data.subscribe(response => this.product = response.data);
-    this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
+    this.route.paramMap.subscribe(response => {
+      // console.log(response.get('slug'));
+      
+     this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
+    });
+    // this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
   }
 
   ngOnInit(): void {
-    console.log("dddd", this.product)
+    if(this.Color(this.product.variants).length === 1){
+      this.selectedColor = this.Color(this.product.variants)[0];
+    }    
   }
 
   // Get Product Color
@@ -60,6 +67,10 @@ export class ProductLeftSidebarComponent implements OnInit {
     this.selectedSize = size;
   }
 
+  selectColor(color) {
+    this.selectedColor = color;
+  }
+
   // Increament
   increment() {
     this.counter++;
@@ -73,6 +84,8 @@ export class ProductLeftSidebarComponent implements OnInit {
   // Add to cart
   async addToCart(product: any) {
     product.quantity = this.counter || 1;
+    product.color = this.selectedColor;
+    product.size = this.selectedSize;
     const status = await this.productService.addToCart(product);
     if (status)
       this.router.navigate(['/shop/cart']);

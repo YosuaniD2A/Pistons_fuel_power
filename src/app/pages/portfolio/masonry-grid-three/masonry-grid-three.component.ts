@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ButtonsConfiguration } from '../../../shared/data/portfolio';
 import { Image } from '@ks89/angular-modal-gallery';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+// import { ImageModalComponent } from 'src/app/shared/components/modal/image-modal/image-modal.component';
 
 @Component({
   selector: 'app-masonry-grid-three',
@@ -14,6 +16,9 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
 
   mostrarImagenDeCarga = true;
   imagenCargada = false;
+
+  showModal: boolean = false;
+  selectedImageUrl: string = '';
 
   public AllImage = [
     new Image(1, { img: 'https://www.dropbox.com/scl/fi/3tjybtha0r4q7dopr28pp/HP-Power-Pistons-Fuel-Power.jpeg?rlkey=9j557ibhxe1ddxil9u1zkugle&dl=1' }),
@@ -114,6 +119,7 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.Images = this.AllImage
+    this.showModal = false;
   }
 
   ngAfterViewInit(): void {
@@ -125,6 +131,20 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
         itemSelector: '.isotopeSelector'
       });
     }, 1000);
+  }
+
+  // openImageModal(imageUrl: string) {
+  //   const modalRef = this.modalService.open(ImageModalComponent);
+  //   modalRef.componentInstance.imageUrl = imageUrl;
+  // }
+
+  openModal(imageUrl: string) {
+    this.selectedImageUrl = imageUrl;
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 
   cargarImagenPorDefecto(image: any) {

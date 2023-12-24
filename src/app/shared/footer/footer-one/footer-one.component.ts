@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CollectionService } from '../../services/collection.service';
+import { Collection } from '../../classes/collection';
 
 @Component({
   selector: 'app-footer-one',
@@ -13,9 +15,14 @@ export class FooterOneComponent implements OnInit {
 
   public today: number = Date.now();
 
-  constructor() { }
+  collections: Collection[] = [];
+
+  constructor(private collectionService: CollectionService) { }
 
   ngOnInit(): void {
+    this.collectionService.getCollections.subscribe( collection => {
+      this.collections = collection
+    })
   }
 
 }

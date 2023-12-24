@@ -60,13 +60,13 @@ export class ProductBoxOneComponent implements OnInit {
     this.ImageSrc = src;
   }
 
-  addToCart(product: any) {
-    this.productService.addToCart(product);
-  }
-
   storeProduct(product: any){
     localStorage['productDetail'] = JSON.stringify(product);
   }
+
+  // addToCart(product: any) {
+  //   this.productService.addToCart(product);
+  // }
 
   // addToWishlist(product: any) {
   //   this.productService.addToWishlist(product);

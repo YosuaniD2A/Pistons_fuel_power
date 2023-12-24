@@ -2728,6 +2728,14 @@ header {
         margin-right: 5px;
         transition: all 0.1s ease;
         vertical-align: middle;
+
+        &.active {
+            background-color: #fff;
+            -webkit-box-shadow: 1px 1px 3px #77777769;
+            -moz-box-shadow: 1px 1px 3px #77777769;
+            // box-shadow: 5px 1px 3px #77777769;
+            box-shadow: 0 0 10px rgba(240, 240, 240, 0.748);
+        }
     }
 }
 

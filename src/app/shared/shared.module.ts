@@ -30,6 +30,7 @@ import { CartModalComponent } from './components/modal/cart-modal/cart-modal.com
 import { CartVariationComponent } from './components/modal/cart-variation/cart-variation.component';
 import { VideoModalComponent } from './components/modal/video-modal/video-modal.component';
 import { SizeModalComponent } from './components/modal/size-modal/size-modal.component';
+import { ImageModalComponent } from './components/modal/image-modal/image-modal.component';
 
 // Skeleton Loader Components
 import { SkeletonProductBoxComponent } from './components/skeleton/skeleton-product-box/skeleton-product-box.component';
@@ -60,10 +61,12 @@ import { DiscountPipe } from './pipes/discount.pipe';
     CartVariationComponent,
     VideoModalComponent,
     SizeModalComponent,
+    ImageModalComponent,
     SkeletonProductBoxComponent,
     LayoutBoxComponent,
     TapToTopComponent,
     DiscountPipe,
+    ImageModalComponent,
   ],
   imports: [
     CommonModule,
@@ -100,6 +103,7 @@ import { DiscountPipe } from './pipes/discount.pipe';
     CartVariationComponent,
     VideoModalComponent,
     SizeModalComponent,
+    ImageModalComponent,
     SkeletonProductBoxComponent,
     LayoutBoxComponent,
     TapToTopComponent,

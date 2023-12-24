@@ -34,9 +34,9 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async openModal(product) {
     await this.productService.getProducts.subscribe(response => this.products = response);
-    this.products = await this.products.filter(items => items.category == product.category && items.id != product.id);
-    const status = await this.productService.addToCart(product);
-    if(status) {
+    this.products = await this.products.filter(items => items.collection == product.collection && items.id != product.id);
+    // const status = await this.productService.addToCart(product);
+    // if(status) {
       this.modalOpen = true;
       if (isPlatformBrowser(this.platformId)) { // For SSR 
         this.modalService.open(this.CartModal, { 
@@ -50,7 +50,7 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
       }
-    }
+    // }
   }
 
   private getDismissReason(reason: any): string {

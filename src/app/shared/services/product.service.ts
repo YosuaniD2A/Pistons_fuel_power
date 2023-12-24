@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 
 const state = {
   products: JSON.parse(localStorage['products'] || '[]'),
-  wishlist: JSON.parse(localStorage['wishlistItems'] || '[]'),
-  compare: JSON.parse(localStorage['compareItems'] || '[]'),
+  // wishlist: JSON.parse(localStorage['wishlistItems'] || '[]'),
+  // compare: JSON.parse(localStorage['compareItems'] || '[]'),
   cart: JSON.parse(localStorage['cartItems'] || '[]')
 }
 

@@ -12,6 +12,7 @@ import { ContactComponent } from './account/contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ErrorComponent } from './error/error.component';
 import { FaqComponent } from './faq/faq.component';
+import { ImageModule } from 'primeng/image';
 
 // Portfolio Components
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
@@ -29,7 +30,8 @@ import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonr
     GalleryModule,
     LightboxModule,
     SharedModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    ImageModule,
   ]
 })
 export class PagesModule { }

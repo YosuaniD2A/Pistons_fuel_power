@@ -29,21 +29,19 @@
             <div class="col-lg-4 col-sm-6 isotopeSelector" [ngClass]="galleryFilter" *ngFor="let image of Images">
                 <div class="overlay">
                     <div class="border-portfolio">
-                        <a href="javascript:void(0)">
-                            <!-- <img [src]="image.modal.img" style="height: auto" class="img-fluid"> -->
+                        <a href="javascript:void(0)" (click)="openModal(image.modal.img)">
                             <img [src]="image.modal.img" (load)="imageCloaded()" (error)="cargarImagenPorDefecto(image)"
                                 style="height: auto" class="img-fluid" />
+
                             <div *ngIf="mostrarImagenDeCarga && !imagenCargada" class="p-5" >
                                 <img src="assets/images/spinner_loader.gif"  alt="Cargando..."/>
                             </div>
                         </a>
                     </div>
                 </div>
-                <!-- <div *ngIf="mostrarImagenDeCarga && !imagenCargada">
-                    <img src="assets/images/portfolio/1.jpg" alt="Cargando..." />
-                </div> -->
             </div>
         </div>
     </div>
 </section>
 <!-- Section ends -->
+<app-image-modal [show]="showModal" [imageUrl]="selectedImageUrl" (closeModal)="closeModal()"></app-image-modal>

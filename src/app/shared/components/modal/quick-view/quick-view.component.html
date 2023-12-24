@@ -17,8 +17,8 @@
                             <del *ngIf="product?.discount"><span class="money">{{ product.price * currency?.price | currency:currency?.currency:'symbol' }}</span></del>
                         </h3>
                         <ul class="color-variant" *ngIf="Color(product.variants).length">
-                            <li [class]="color" *ngFor="let color of Color(product.variants)"
-                                [ngStyle]="{'background-color': color}" (click)="ChangeVariants(color, product)">
+                            <li [class]="color" [class.active]="selectedColor == color" *ngFor="let color of Color(product.variants)"
+                                [ngStyle]="{'background-color': color}" (click)="selectColor(color)">
                             </li>
                         </ul>
                         <div class="border-product">
@@ -28,8 +28,8 @@
                         <div class="product-description border-product">
                             <div class="size-box" *ngIf="Size(product.variants).length">
                                 <ul>
-                                    <li *ngFor="let size of Size(product.variants)">
-                                        <a href="javascript:void(0)">{{ size | titlecase }}</a>
+                                    <li [class.active]="selectedSize == size" *ngFor="let size of Size(product.variants)">
+                                        <a href="javascript:void(0)" (click)="selectSize(size)">{{ size | titlecase }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -53,8 +53,8 @@
                             </div>
                         </div>
                         <div class="product-buttons">
-                            <a href="javascript:void(0)" class="btn btn-solid" [class.disabled]="counter > product.stock" (click)="addToCart(product)">add to cart</a>
-                            <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]" class="btn btn-solid">view detail</a>
+                            <a href="javascript:void(0)" class="btn btn-solid" [class.disabled]="!selectedSize || !selectedColor" (click)="addToCart(product);">add to cart</a>
+                            <!-- <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]" class="btn btn-solid">view detail</a> -->
                         </div>
                     </div>
                 </div>

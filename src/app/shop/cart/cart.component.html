@@ -20,8 +20,8 @@
                         <th scope="col">total</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let product of products">
-                    <tr>
+                <tbody class="cartBody" >
+                    <tr *ngFor="let product of products">
                         <td>
                             <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">
                                 <img [src]="product.images[0].img_url" [alt]="product.images[0].alt">
