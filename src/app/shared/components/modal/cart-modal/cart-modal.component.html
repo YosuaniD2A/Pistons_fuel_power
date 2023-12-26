@@ -5,15 +5,21 @@
             <div class="row">
                 <div class="col-12">
                     <div class="modal-bg addtocart">
-                        <button type="button" id="close-cart-modal" class="close" (click)="modal.dismiss('Cross click')">
+                        <button type="button" id="close-cart-modal" class="close"
+                            (click)="modal.dismiss('Cross click')">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <div class="media">
-                            <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">
-                                <img class="img-fluid pro-img" [src]="product.images[0].img_url" [alt]="product.images[0].alt">
+                            <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]"
+                                (click)="storeProduct(product)">
+                                <!-- <img class="img-fluid pro-img" [src]="product.images[0].img_url" [alt]="product.images[0].alt"> -->
+                                <img [defaultImage]="ImageSrc ? ImageSrc : 'assets/images/product/placeholder.jpg'"
+                                    [lazyLoad]="ImageSrc ? ImageSrc : product.images[0].img_url"
+                                    class="img-fluid lazy-loading" alt="{{ product.images[0].alt }}" />
                             </a>
                             <div class="media-body align-self-center text-center">
-                                <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">
+                                <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]"
+                                    (click)="storeProduct(product)">
                                     <h6>
                                         <i class="fa fa-check"></i>Item
                                         <span>{{ product.title | titlecase }}</span>
@@ -23,7 +29,8 @@
                                 <div class="buttons">
                                     <a [routerLink]="['/shop/cart']" class="view-cart btn btn-solid">Your cart</a>
                                     <a [routerLink]="['/shop/checkout']" class="checkout btn btn-solid">Check out</a>
-                                    <a [routerLink]="['/shop/collection/infinitescroll']" class="continue btn btn-solid">Continue shopping</a>
+                                    <a [routerLink]="['/shop/collection/infinitescroll']" (click)="closeModal()"
+                                        class="continue btn btn-solid">Continue shopping</a>
                                 </div>
 
                                 <div class="upsell_payment">
@@ -41,15 +48,24 @@
                                     <div class="product-box col-sm-3 col-6">
                                         <div class="img-wrapper">
                                             <div class="front">
-                                                <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">
-                                                    <img [src]="product.images[0].img_url" class="img-fluid mb-1" alt="">
+                                                <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]"
+                                                    (click)="storeProduct(product)">
+                                                    <!-- <img [src]="product.images[0].img_url" class="img-fluid mb-1"
+                                                        alt=""> -->
+                                                    <img [defaultImage]="'assets/images/product/placeholder.jpg'"
+                                                        [lazyLoad]="product.images[0].img_url"
+                                                        class="img-fluid lazy-loading"
+                                                        alt="{{ product.images[0].alt }}" />
                                                 </a>
                                             </div>
                                             <div class="product-detail">
                                                 <h6 class="mt-0">
-                                                    <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]"><span>{{ product.title | titlecase }}</span></a>
+                                                    <a
+                                                        [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]"><span>{{
+                                                            product.title | titlecase }}</span></a>
                                                 </h6>
-                                                <h4><span>{{ product.price * currency?.price | discount:product | currency:currency?.currency:'symbol' }}</span></h4>
+                                                <h4><span>{{ product.price * currency?.price | discount:product |
+                                                        currency:currency?.currency:'symbol' }}</span></h4>
                                             </div>
                                         </div>
                                     </div>

@@ -20,6 +20,7 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
   public closeResult: string;
   public modalOpen: boolean = false;
   public products: any[] = [];
+  public ImageSrc : string
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private modalService: NgbModal,
@@ -67,6 +68,15 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
     if(this.modalOpen){
       this.modalService.dismissAll();
     }
+  }
+
+  storeProduct(product: any){
+    localStorage['productDetail'] = JSON.stringify(product);
+    this.modalService.dismissAll();
+  }
+
+  closeModal(){
+    this.modalService.dismissAll();
   }
 
 }

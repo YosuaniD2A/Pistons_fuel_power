@@ -13,7 +13,7 @@ export class ImageModalComponent {
   @Output() closeModal = new EventEmitter();
 
   rotationDegrees: number = 0;
-  zoomFactor: number = 1;
+  zoomFactor: number = 0.5;
 
   isPanning: boolean = false;
   startX: number = 0;
@@ -80,7 +80,7 @@ export class ImageModalComponent {
 
   restartImage() {
     this.rotationDegrees = 0;
-    this.zoomFactor = 1;
+    this.zoomFactor = 0.5;
     this.translateX = 0;
     this.translateY = 0;
   }
@@ -88,6 +88,6 @@ export class ImageModalComponent {
   onCloseModal() {
     this.closeModal.emit();
     this.rotationDegrees = 0;
-    this.zoomFactor = 1;
+    this.zoomFactor = 0.5;
   }
 }

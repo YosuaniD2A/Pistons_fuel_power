@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailsMainSlider, ProductDetailsThumbSlider } from '../../../../shared/data/slider';
 import { Product } from '../../../../shared/classes/product';
 import { ProductService } from '../../../../shared/services/product.service';
 import { SizeModalComponent } from "../../../../shared/components/modal/size-modal/size-modal.component";
+import { CartModalComponent } from 'src/app/shared/components/modal/cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -11,6 +12,9 @@ import { SizeModalComponent } from "../../../../shared/components/modal/size-mod
   styleUrls: ['./product-left-sidebar.component.scss']
 })
 export class ProductLeftSidebarComponent implements OnInit {
+
+  @Input() currency: any = this.productService.Currency;
+  @Input() cartModal: boolean = true; // Default False
 
   public product: Product = {};
   public counter: number = 1;
@@ -21,6 +25,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   public active = 1;
 
   @ViewChild("sizeChart") SizeChart: SizeModalComponent;
+  @ViewChild("cartModal") CartModal: CartModalComponent;
 
   public ProductDetailsMainSliderConfig: any = ProductDetailsMainSlider;
   public ProductDetailsThumbConfig: any = ProductDetailsThumbSlider;
@@ -86,9 +91,13 @@ export class ProductLeftSidebarComponent implements OnInit {
     product.quantity = this.counter || 1;
     product.color = this.selectedColor;
     product.size = this.selectedSize;
+    product.sku = product.variants.filter(item => {
+      return item.color === product.color && item.size === product.size;
+    })[0]?.sku;
     const status = await this.productService.addToCart(product);
     if (status)
-      this.router.navigate(['/shop/cart']);
+      // this.router.navigate(['/shop/cart']);
+      this.CartModal.openModal(product);
   }
 
   // Buy Now

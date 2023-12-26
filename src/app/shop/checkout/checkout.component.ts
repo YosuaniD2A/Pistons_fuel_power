@@ -40,6 +40,8 @@ export class CheckoutComponent implements OnInit {
     this.productService.cartItems.subscribe(response => this.products = response);
     this.getTotal.subscribe(amount => this.amount = amount);
     this.initConfig();
+    console.log(this.products);
+    
   }
 
   public get getTotal(): Observable<number> {
@@ -58,7 +60,7 @@ export class CheckoutComponent implements OnInit {
       }
     });
     handler.open({
-      name: 'Multikart',
+      name: 'Pistons Fuel Power',
       description: 'Online Fashion Store',
       amount: this.amount * 100
     }) 

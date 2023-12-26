@@ -2731,9 +2731,8 @@ header {
 
         &.active {
             background-color: #fff;
-            -webkit-box-shadow: 1px 1px 3px #77777769;
-            -moz-box-shadow: 1px 1px 3px #77777769;
-            // box-shadow: 5px 1px 3px #77777769;
+            -webkit-box-shadow: 0 0 10px rgba(240, 240, 240, 0.748);
+            -moz-box-shadow: 0 0 10px rgba(240, 240, 240, 0.748);
             box-shadow: 0 0 10px rgba(240, 240, 240, 0.748);
         }
     }
@@ -6128,9 +6127,9 @@ ngx-loading-bar {
             li {
                 &.active {
                     background-color: #fff;
-                    -webkit-box-shadow: 1px 1px 3px #77777769;
-                    -moz-box-shadow: 1px 1px 3px #77777769;
-                    box-shadow: 1px 1px 3px #77777769;
+                    -webkit-box-shadow: 0 0 10px rgba(240, 240, 240, 0.748);
+                    -moz-box-shadow: 0 0 10px rgba(240, 240, 240, 0.748);
+                    box-shadow: 0 0 10px rgba(240, 240, 240, 0.748);
                 }
             }
         }
@@ -7857,7 +7856,7 @@ ngx-loading-bar {
 
         tr {
             td {
-                min-width: 210px;
+                min-width: 110px;
                 vertical-align: middle;
                 color: $grey;
                 border-top: 0;
@@ -9275,7 +9274,7 @@ ngx-loading-bar {
             line-height: 20px;
             margin-bottom: 20px;
 
-            span {
+            span, .detail {
                 float: right;
                 font-size: 18px;
                 line-height: 20px;

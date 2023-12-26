@@ -8,6 +8,7 @@
                     <ngb-panel *ngFor="let panel of panels" [id]="panel.id" [title]="panel.title">
                       <ng-template ngbPanelContent>
                         <p *ngIf="panel.type == 'text'" class="mb-0">{{ panel.content }}</p>
+                        <img *ngIf="panel.type =='text/image'" [src]="panel.url" style="width: 300px;" class="mb-0">
                       </ng-template>
                     </ngb-panel>
                   </ngb-accordion>

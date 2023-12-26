@@ -164,7 +164,10 @@ export class ProductService {
 
   // Add to Cart
   public addToCart(product): any {
-    const cartItem = state.cart.find(item => item.id === product.id);
+    // product.sku = product.variants.filter(item => {
+    //   return item.color === product.color && item.size === product.size;
+    // })[0]?.sku;
+    const cartItem = state.cart.find(item => item.sku === product.sku);
     const qty = product.quantity ? product.quantity : 1;
     const items = cartItem ? cartItem : product;
     const stock = this.calculateStockCounts(items, qty);
@@ -176,7 +179,7 @@ export class ProductService {
     } else {
       state.cart.push({
         ...product,
-        quantity: qty
+        quantity: qty,
       })
     }
 

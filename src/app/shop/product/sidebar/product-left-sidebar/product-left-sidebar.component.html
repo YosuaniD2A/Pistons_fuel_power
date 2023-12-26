@@ -217,4 +217,5 @@
   <app-related-product [type]="product?.type"></app-related-product>
 </section>
 <app-size-modal #sizeChart [product]="product"></app-size-modal>
+<app-cart-modal #cartModal [product]="product" [currency]="currency" *ngIf="cartModal"></app-cart-modal>
 <!-- Section ends -->

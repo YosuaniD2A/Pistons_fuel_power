@@ -18,6 +18,7 @@ export class QuickViewComponent implements OnInit, OnDestroy {
 
   @Input() product: Product;
   @Input() currency: any;
+  @Input() cartModal: boolean = true; // Default False
   @ViewChild("quickView", { static: false }) QuickView: TemplateRef<any>;
   @ViewChild("cartModal") CartModal: CartModalComponent;
 
@@ -35,9 +36,9 @@ export class QuickViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // if(this.Color(this.product.variants).length === 1){
-    //   this.selectedColor = this.Color(this.product.variants)[0];
-    // }   
+    if(this.Color(this.product.variants).length === 1){
+      this.selectedColor = this.Color(this.product.variants)[0];
+    }   
   }
 
   openModal() {
@@ -124,10 +125,13 @@ export class QuickViewComponent implements OnInit, OnDestroy {
     product.quantity = this.counter || 1;
     product.color = this.selectedColor;
     product.size = this.selectedSize;
+    product.sku = product.variants.filter(item => {
+      return item.color === product.color && item.size === product.size;
+    })[0]?.sku;
     const status = await this.productService.addToCart(product);
     if (status) {
-      // this.router.navigate(['/shop/cart']);
       this.modalService.dismissAll();
+      this.CartModal.openModal(product)
     }
   }
 

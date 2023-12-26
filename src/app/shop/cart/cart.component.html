@@ -14,6 +14,7 @@
                     <tr class="table-head">
                         <th scope="col">image</th>
                         <th scope="col">product name</th>
+                        <th scope="col">size</th>
                         <th scope="col">price</th>
                         <th scope="col">quantity</th>
                         <th scope="col">action</th>
@@ -23,12 +24,15 @@
                 <tbody class="cartBody" >
                     <tr *ngFor="let product of products">
                         <td>
-                            <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">
+                            <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]" (click)="storeProduct(product)">
                                 <img [src]="product.images[0].img_url" [alt]="product.images[0].alt">
                             </a>
                         </td>
                         <td>
-                            <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">{{ product.title | titlecase }}</a>
+                            <div class="text-start">
+                                <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">{{ product.title | titlecase }}</a>
+                                <p>SKU: {{product.sku}}</p>
+                            </div>
                             <div class="mobile-cart-content row">
                                 <div class="col">
                                     <div class="qty-box">
@@ -50,6 +54,11 @@
                                     </h2>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                            <h2>
+                                {{ product.size }}
+                            </h2>
                         </td>
                         <td>
                             <h2>
@@ -85,8 +94,16 @@
                         </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">total price :</td>
+                        <td>
+                            <h2> {{ getTotal | async | currency:productService?.Currency.currency:'symbol'}}</h2>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-            <table class="table cart-table table-responsive-md">
+            <!-- <table class="table cart-table table-responsive-xs">
                 <tfoot>
                     <tr>
                         <td>total price :</td>
@@ -95,12 +112,12 @@
                         </td>
                     </tr>
                 </tfoot>
-            </table>
+            </table> -->
         </div>
         </div>
         <div class="row cart-buttons" *ngIf='products.length'>
             <div class="col-6">
-                <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">continue shopping</a>
+                <a [routerLink]="['/shop/collection/infinitescroll']" class="btn btn-solid">continue shopping</a>
             </div>
             <div class="col-6">
                 <a [routerLink]="['/shop/checkout']" class="btn btn-solid">check out</a>

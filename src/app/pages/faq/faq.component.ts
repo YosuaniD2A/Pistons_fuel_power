@@ -14,7 +14,7 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
     this.panels = [
       { id: 'static-1', type: 'text', title: 'What kind of garments do we use?', content: 'We want you to try the best shirts in the market. Most of our products are 100% cotton, but this is subject to availability from our suppliers. WE PRINT IN SIZES SMALL TO 5XLARGE!' },
-      { id: 'static-2', type: 'text/image', title: 'What are the sizes and measurements of the products?', content: 'The measurements of our shirts are the following.', url:'' },
+      { id: 'static-2', type: 'text/image', title: 'What are the sizes and measurements of the products?', content: 'The measurements of our shirts are the following.', url:'assets/images/size-chart.png' },
       { id: 'static-3', type: 'text', title: 'What payments are accepted?', content: 'You can pay your orders through PayPal, and/or credit cards.' },
       { id: 'static-4', type: 'text', title: 'Does Pistons Fuel Power have a physical store?', content: 'No. We’re only focused on e-Commerce, which means we only sell our products through online stores.' },
       { id: 'static-5', type: 'text', title: 'What can I do to preserve the good quality of my shirt?', content: 'We suggest you wash them inside-out in cold water, and line dry.' },
