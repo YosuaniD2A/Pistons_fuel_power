@@ -1798,6 +1798,9 @@ body {
     }
     button {
         &.close {
+            border: 1px solid #474646 !important;
+            border-radius: 100%;
+            background-color: transparent;
             color: $white;
         }
     }
