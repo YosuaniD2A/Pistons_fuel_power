@@ -35,7 +35,9 @@ export class ProductService {
   private async products(): Promise<Product[]> {
     try {
       const response = await lastValueFrom(this.http.get<{ data: Product[] }>(`${environment.apiURL}/products/getAllFullProducts`));
-      const products = response.data;
+      const products = response.data.filter(prod => {
+        return prod.sale !== false;
+      });
   
       localStorage['products'] = JSON.stringify(products);
   

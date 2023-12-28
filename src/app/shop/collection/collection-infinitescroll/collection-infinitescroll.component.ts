@@ -23,6 +23,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
   public maxPrice: number = 1200;
   public tags: any[] = [];
   public collection: string;
+  public search : string;
   public pageNo: number = 1;
   public paginate: any = {}; // Pagination use only
   public sortBy: string; // Sorting Order
@@ -38,6 +39,7 @@ export class CollectionInfinitescrollComponent implements OnInit {
       this.products = [];
       this.finished = false;
 
+      this.search = params.search ? params.search : null;
       this.brands = params.brand ? params.brand.split(",") : [];
       this.colors = params.color ? params.color.split(",") : [];
       this.size = params.size ? params.size.split(",") : [];
@@ -65,6 +67,10 @@ export class CollectionInfinitescrollComponent implements OnInit {
             this.all_products = this.all_products.filter(item => item.collection == this.collection);
         }
 
+        // Search Filter
+        if (params.search) {
+            this.all_products = this.all_products.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()));
+        }
 
         // Price Filter
         this.all_products = this.all_products.filter(item => item.price >= this.minPrice && item.price <= this.maxPrice)

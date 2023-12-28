@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef  } from '@angular/core';
 // import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -24,6 +24,7 @@ export class ImageModalComponent {
   @ViewChild('imageContainer') imageContainer: ElementRef;
 
   constructor() { }
+
 
   rotateRight() {
     this.rotationDegrees += 90;
