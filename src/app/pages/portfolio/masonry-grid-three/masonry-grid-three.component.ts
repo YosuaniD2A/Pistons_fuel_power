@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ButtonsConfiguration } from '../../../shared/data/portfolio';
 import { Image } from '@ks89/angular-modal-gallery';
+import { ActivatedRoute } from '@angular/router';
+import { log } from 'console';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // import { ImageModalComponent } from 'src/app/shared/components/modal/image-modal/image-modal.component';
 
@@ -11,7 +13,8 @@ import { Image } from '@ks89/angular-modal-gallery';
 })
 export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
 
-  public galleryFilter: string = 'all'
+  public galleryFilter: string;
+  public collection: string;
   public Images;
 
   mostrarImagenDeCarga = true;
@@ -27,7 +30,6 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
     new Image(4, { img: 'https://www.dropbox.com/scl/fi/jsafuesdopgqrmw4zjeg2/Dodge-Charger-Rt-Pistons-Fuel-power.jpeg?rlkey=8im78du5l46pkpcz0jqcl5z0k&dl=1' }),
     new Image(5, { img: 'https://www.dropbox.com/scl/fi/alivtlxq3luqcld3hrat2/Mustang-PIstons-Fuel-Power.jpeg?rlkey=22f9vqqkjavkprjc9g8k09fji&dl=1' }),
     new Image(6, { img: 'https://www.dropbox.com/scl/fi/5f5jbeqfy4lte7t59101z/Modified-Camaro-PIstons-Fuel-Power.jpeg?rlkey=k1veky2qbevjcf7mpqpunrx1k&dl=1' }),
-    new Image(7, { img: 'https://www.dropbox.com/scl/fi/3tjybtha0r4q7dopr28pp/HP-Power-Pistons-Fuel-Power.jpeg?rlkey=9j557ibhxe1ddxil9u1zkugle&dl=1' }),
     new Image(8, { img: 'https://www.dropbox.com/scl/fi/j3wbwkva9fnuiid9gp3jb/dodge-Charger-Pistons-Fuel-Power.jpeg?rlkey=vpk2rofsnxx6pzosruky1ejpy&dl=1' }),
     new Image(8, { img: 'https://www.dropbox.com/scl/fi/rhy6guss7mu11qs9ererk/Dodge-Charger-Pistons-_Fuel-Power.jpeg?rlkey=1px8tq18c4oc5wt58s3wxn1as&dl=1' }),
     new Image(8, { img: 'https://www.dropbox.com/scl/fi/31i3lsanp9qvs7k93jfc2/Dodge-Challenger-Pistons-Fuel-Power.jpeg?rlkey=rhdi34ar084w9e5bz4lu1fnb3&dl=1' }),
@@ -115,10 +117,33 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
     new Image(8, { img: 'https://www.dropbox.com/scl/fi/3zap52l3cxiv185ge77uw/1940-Motor-LS3-Pistons-Fuel-Power.jpeg?rlkey=myi01sd2fol55nnbxnqkmw4hz&dl=1' })
   ]
 
-  constructor() { }
+  public BadgesImages = [
+    new Image(8, { img: 'https://img.freepik.com/vector-gratis/etiqueta-vintage-composicion-letras-oscuridad_1284-43724.jpg?size=626&ext=jpg&ga=GA1.2.1997202244.1697674262&semt=ais' }),
+    new Image(8, { img: 'https://img.freepik.com/vector-gratis/diseno-etiqueta-vintage-composicion-letras_1284-47152.jpg?size=626&ext=jpg&ga=GA1.2.1997202244.1697674262&semt=ais' }),
+    new Image(8, { img: 'https://img.freepik.com/vector-gratis/insignia-autoridad-clasica-sobre-fondo-foto_23-2147504408.jpg?size=626&ext=jpg&ga=GA1.2.1997202244.1697674262&semt=ais' }),
+    new Image(8, { img: 'https://img.freepik.com/vector-gratis/logo-detallado-dibujado-mano_52683-83793.jpg?size=626&ext=jpg&ga=GA1.2.1997202244.1697674262&semt=ais' }),
+    new Image(8, { img: 'https://assets.turbologo.com/blog/es/2019/10/19133003/harley-davidson-logo-evolution-958x575.jpg' }),
+    new Image(8, { img: 'https://i.pinimg.com/originals/f0/e1/c1/f0e1c1907b9050a6b992a11424410c30.jpg' }),
+  ]
+
+  constructor(private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.collection = params.collection ? params.collection : 'all';
+
+      if(this.collection === "Muscle cars")
+        this.collection = "Muscle_cars"
+
+      this.filter(this.collection);
+      console.log(this.galleryFilter);
+    });
+
+    console.log(this.Images);
+    
+    
+   }
 
   ngOnInit(): void {
-    this.Images = this.AllImage
+    // this.Images = this.AllImage
     this.showModal = false;
   }
 
@@ -133,10 +158,6 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
     }, 1000);
   }
 
-  // openImageModal(imageUrl: string) {
-  //   const modalRef = this.modalService.open(ImageModalComponent);
-  //   modalRef.componentInstance.imageUrl = imageUrl;
-  // }
 
   openModal(imageUrl: string) {
     this.selectedImageUrl = imageUrl;
@@ -172,12 +193,14 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
 
     if (term == 'all') {
       this.Images = this.AllImage
-    } else if (term == 'muscle') {
+    } else if (term == 'Muscle_cars') {
       this.Images = this.MuscleImage
-    } else if (term == 'motorcycle') {
+    } else if (term == 'Motorcycles') {
       this.Images = this.MotorsImages
-    } else if (term == 'classic') {
+    } else if (term == 'Classics') {
       this.Images = this.ClassicImages
+    }else if (term == 'Badges') {
+      this.Images = this.BadgesImages
     }
 
     this.galleryFilter = term

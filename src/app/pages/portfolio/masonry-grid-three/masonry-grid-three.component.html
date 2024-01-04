@@ -11,12 +11,14 @@
                     <ul class="list-inline filter">
                         <li [class.active]="galleryFilter == 'all'"><a href="javascript:void(0)"
                                 (click)="filter('all')">All </a></li>
-                        <li [class.active]="galleryFilter == 'muscle'"><a href="javascript:void(0)"
-                                (click)="filter('muscle')">Muscle</a></li>
-                        <li [class.active]="galleryFilter == 'motorcycle'"><a href="javascript:void(0)"
-                                (click)="filter('motorcycle')">Motorcycles</a></li>
-                        <li [class.active]="galleryFilter == 'classic'"><a href="javascript:void(0)"
-                                (click)="filter('classic')">Classic</a></li>
+                        <li [class.active]="galleryFilter == 'Muscle_cars'"><a href="javascript:void(0)"
+                                (click)="filter('Muscle_cars')">Muscle cars</a></li>
+                        <li [class.active]="galleryFilter == 'Motorcycles'"><a href="javascript:void(0)"
+                                (click)="filter('Motorcycles')">Motorcycles</a></li>
+                        <li [class.active]="galleryFilter == 'Classics'"><a href="javascript:void(0)"
+                                (click)="filter('Classics')">Classic</a></li>
+                        <li [class.active]="galleryFilter == 'Badges'"><a href="javascript:void(0)"
+                                (click)="filter('Badges')">Badges</a></li>
                     </ul>
                 </div>
             </div>
@@ -33,8 +35,7 @@
                             <!-- <img [src]="image.modal.img" (load)="imageCloaded()" (error)="cargarImagenPorDefecto(image)"
                                 style="height: auto" class="img-fluid" /> -->
                             <img [defaultImage]="image.modal.img ? image.modal.img : '../assets/images/product/placeholder.jpg'"
-                                [lazyLoad]="image.modal.img ? image.modal.img : image.modal.img"
-                                (load)="imageCloaded()"
+                                [lazyLoad]="image.modal.img ? image.modal.img : image.modal.img" (load)="imageCloaded()"
                                 class="img-fluid lazy-loading" alt="" />
 
                             <div *ngIf="mostrarImagenDeCarga && !imagenCargada" class="p-5">
