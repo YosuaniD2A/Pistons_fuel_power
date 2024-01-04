@@ -74,7 +74,7 @@
                         <div class="footer-contant">
                             <ul>
                                 <li *ngFor="let collection of collections">
-									<a routerLink="/shop/collection/infinitescroll" [queryParams]="{ collection: collection.name }" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+									<a routerLink="/shop" [queryParams]="{ collection: collection.name }" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
 										{{collection.name}}
 									</a>
 								</li>

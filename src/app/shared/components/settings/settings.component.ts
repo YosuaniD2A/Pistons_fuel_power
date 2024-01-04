@@ -60,7 +60,7 @@ export class SettingsComponent implements OnInit {
       const inputValue = (event.target as HTMLInputElement).value;
       console.log(inputValue);
       // Construye la URL con el parámetro de consulta
-      const rutaConQueryParam = '/shop/collection/infinitescroll';
+      const rutaConQueryParam = '/shop';
       const queryParams = { search: inputValue };
 
       // Navega a la ruta con el parámetro de consulta

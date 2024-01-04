@@ -33,7 +33,7 @@
     </div>
     <div class="row partition2">
       <div class="col-md-6 mb-4" *ngFor="let collection of collections">
-        <a [routerLink]="['/shop/collection/infinitescroll']" [queryParams]="{ collection: collection.name}">
+        <a [routerLink]="['/shop']" [queryParams]="{ collection: collection.name}">
           <div class="collection-banner p-right text-center">
             <div class="collection-image" [ngStyle]="{'background-image': 'url(' + collection.img_url+ ')'}">
               <!-- <img [src]="collection.image" class="img-fluid" alt="collection-banner"> -->

@@ -25,7 +25,8 @@ const routes: Routes = [
     component: FaqComponent 
   },
   { 
-    path: 'gallery/masonry/grid/three', 
+    // path: 'gallery/masonry/grid/three', 
+    path: 'gallery', 
     component: MasonryGridThreeComponent 
   },
 ];

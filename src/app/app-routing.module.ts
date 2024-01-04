@@ -7,7 +7,7 @@ import { PagesComponent } from './pages/pages.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home/fashion',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -20,13 +20,13 @@ const routes: Routes = [
     loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
   },
   { 
-    path: 'pages',
+    path: 'page',
     component: PagesComponent,
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) 
   },
   {
     path: '**', // Navigate to Home Page if not found any page
-    redirectTo: '/home/fashion'
+    redirectTo: '/home'
   },
 ];
 

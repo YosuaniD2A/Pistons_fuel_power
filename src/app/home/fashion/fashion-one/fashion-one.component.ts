@@ -30,11 +30,14 @@ export class FashionOneComponent implements OnInit {
           if (index === -1) this.productCollections.push(collection);
         })
       })
+      
+      this.active = this.productCollections.length > 0 ? this.productCollections[0] : null;
     });
+    
+    // this.active = this.productCollections[0];
 
     this.collectionService.getCollections.subscribe(response => {
       this.collections = response;
-      console.log(this.collections);
     })
 
   }

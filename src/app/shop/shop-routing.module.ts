@@ -13,15 +13,17 @@ import { Resolver } from '../shared/services/resolver.service';
 
 const routes: Routes = [
   {
-    path: 'product/left/sidebar/:slug',
+    // path: 'collection/infinitescroll',
+    path: '',
+    component: CollectionInfinitescrollComponent
+  },
+  {
+    // path: 'product/left/sidebar/:slug',
+    path: 'product/:slug',
     component: ProductLeftSidebarComponent,
     resolve: {
       data: Resolver
     }
-  },
-  {
-    path: 'collection/infinitescroll',
-    component: CollectionInfinitescrollComponent
   },
   {
     path: 'cart',

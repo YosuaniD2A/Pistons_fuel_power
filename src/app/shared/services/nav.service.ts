@@ -38,16 +38,16 @@ export class NavService {
 
 	MENUITEMS: Menu[] = [
 		{
-			title: 'home', type: 'link', active: false, path: '/home/fashion'
+			title: 'home', type: 'link', active: false, path: '/home'
 		},
 		{
-			title: 'Gallery', type: 'link', active: false, path: '/pages/gallery/masonry/grid/three'
+			title: 'Gallery', type: 'link', active: false, path: '/page/gallery'
 		},
 		{
-			title: 'About us', type: 'link', active: false, path: '/pages/aboutus'
+			title: 'About us', type: 'link', active: false, path: '/page/aboutus'
 		},
 		{
-			title: 'FAQ', type: 'link', active: false, path: '/pages/faq'
+			title: 'FAQ', type: 'link', active: false, path: '/page/faq'
 		}
 	];
 
@@ -61,14 +61,14 @@ export class NavService {
 		this.collectionService.getCollections.subscribe((collections) => {			
 		  const dynamicMenuItems = collections.map((collection) => {
 			return {
-			  path: '/shop/collection/infinitescroll',
+			  path: '/shop',
 			  param: collection.name,
 			  title: collection.name,
 			  type: 'link',
 			};
 		  });
 		  dynamicMenuItems.push({
-			path: '/shop/collection/infinitescroll',
+			path: '/shop',
 			  param: 'All',
 			  title: 'All',
 			  type: 'link',
