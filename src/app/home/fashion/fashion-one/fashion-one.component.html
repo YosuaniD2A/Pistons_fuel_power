@@ -9,7 +9,7 @@
     <source src="../../../../assets/video/video_banner_pfp.mp4" type="video/mp4">
     <source src="https://www.dropbox.com/scl/fi/r4a8zbet16jj2ehvmlk75/video_banner_pfp.mp4?rlkey=0phd5bswtf7d1nnpfxbbx5l4q&dl=1" type="video/mp4">
   </video> -->
-  <img src="assets/images/PISTONS_2.gif" alt="gif_banner">
+  <img src="assets/images/PISTONS_3.gif" alt="gif_banner">
 </section>
 <!-- Home slider End -->
 
@@ -35,7 +35,7 @@
       <div class="col-md-6 mb-4" *ngFor="let collection of collections">
         <a [routerLink]="['/page/gallery']" [queryParams]="{ collection: collection.name}">
           <div class="collection-banner p-right text-center">
-            <div class="collection-image" [ngStyle]="{'background-image': 'url(' + collection.img_url+ ')'}">
+            <div class="border border-dark-subtle collection-image" [ngStyle]="{'background-image': 'url(' + collection.img_url+ ')'}">
               <!-- <img [src]="collection.image" class="img-fluid" alt="collection-banner"> -->
               <div class="contain-banner layer-blur">
                 <div>

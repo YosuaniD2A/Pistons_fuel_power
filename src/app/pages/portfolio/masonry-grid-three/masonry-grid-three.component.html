@@ -26,16 +26,14 @@
     </div>
 </section>
 <section class="portfolio-section pt-0 port-col zoom-gallery">
-    <div class="container">
+    <div class="gallery-section container">
         <div class="row isotopeContainer">
             <div class="col-lg-2 col-sm-3 isotopeSelector" [ngClass]="galleryFilter" *ngFor="let image of Images">
                 <div class="overlay">
                     <div class="border-portfolio">
-                        <a href="javascript:void(0)" (click)="openModal(image.modal.img)">
-                            <!-- <img [src]="image.modal.img" (load)="imageCloaded()" (error)="cargarImagenPorDefecto(image)"
-                                style="height: auto" class="img-fluid" /> -->
-                            <img [defaultImage]="image.modal.img ? image.modal.img : '../assets/images/product/placeholder.jpg'"
-                                [lazyLoad]="image.modal.img ? image.modal.img : image.modal.img" (load)="imageCloaded()"
+                        <a href="javascript:void(0)" (click)="goShop(image.products_id)">
+                            <img [defaultImage]="image.img_url ? image.img_url : '../assets/images/product/placeholder.jpg'"
+                                [lazyLoad]="image.img_url ? image.img_url : image.img_url" (load)="imageCloaded()"
                                 class="img-fluid lazy-loading" alt="" />
 
                             <div *ngIf="mostrarImagenDeCarga && !imagenCargada" class="p-5">
@@ -66,4 +64,4 @@
     </div>
 </section>
 <!-- Section ends -->
-<app-image-modal [show]="showModal" [imageUrl]="selectedImageUrl" (closeModal)="closeModal()"></app-image-modal>
+<!-- <app-image-modal [show]="showModal" [imageUrl]="selectedImageUrl" (closeModal)="closeModal()"></app-image-modal> -->
