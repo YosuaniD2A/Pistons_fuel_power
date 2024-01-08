@@ -40,17 +40,20 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
         this.MotorsImages = response.filter(item => item.collection == 'Motorcycles');
         this.ClassicImages = response.filter(item => item.collection == 'Classics');
         this.BadgesImages = response.filter(item => item.collection == 'Badges');
-
-        console.log(this.AllImage);
-      
+        
+        console.log(this.Images);
   
         this.filter(this.collection);
+
+        console.log(this.Images);
       });
     });
   }
 
   ngOnInit(): void {
     this.showModal = false;
+  
+    
 
     // this.AllImage = [
     //   new Image(1, { img: 'https://www.dropbox.com/scl/fi/3tjybtha0r4q7dopr28pp/HP-Power-Pistons-Fuel-Power.jpeg?rlkey=9j557ibhxe1ddxil9u1zkugle&dl=1' }),

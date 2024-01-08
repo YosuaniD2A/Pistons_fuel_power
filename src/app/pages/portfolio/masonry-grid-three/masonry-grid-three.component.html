@@ -44,23 +44,11 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="d-flex flex-wrap">
-            <div [ngClass]="galleryFilter" *ngFor="let image of Images">
-                <div class="overlay">
-                    <div class="border-portfolio">
-                        <a href="javascript:void(0)" (click)="openModal(image.modal.img)">
-                            <img [src]="image.modal.img" (load)="imageCloaded()" (error)="cargarImagenPorDefecto(image)"
-                                style="height: auto" class="img-fluid" />
-    
-                            <div *ngIf="mostrarImagenDeCarga && !imagenCargada" class="p-5">
-                                <img src="assets/images/spinner_loader.gif" alt="Cargando..." />
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
+        <div class="col-sm-12 text-center section-b-space no-found" *ngIf="Images == undefined || Images?.length == 0">
+            <img src="assets/images/empty_search.png" class="img-fluid mb-4">
+            <h3>Sorry! No images were found in this gallery collection!!! </h3>
+            <p>Please try searching in one of our other collections.</p>
+        </div>
     </div>
 </section>
 <!-- Section ends -->
