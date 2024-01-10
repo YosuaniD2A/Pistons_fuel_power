@@ -69,8 +69,18 @@ export class CollectionInfinitescrollComponent implements OnInit {
 
         // Search Filter
         if (params.search) {
-            this.all_products = this.all_products.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()));
-        }
+          const searchTerm = this.search.toLowerCase();
+          
+          // Filtrar por title
+          let filteredProducts = this.all_products.filter(item => item.title.toLowerCase().includes(searchTerm));
+      
+          // Si no se encontraron coincidencias en title, buscar en code
+          if (filteredProducts.length === 0) {
+              filteredProducts = this.all_products.filter(item => item.code.toLowerCase().includes(searchTerm));
+          }
+      
+          this.all_products = filteredProducts;
+      }
 
         // Price Filter
         this.all_products = this.all_products.filter(item => item.price >= this.minPrice && item.price <= this.maxPrice)

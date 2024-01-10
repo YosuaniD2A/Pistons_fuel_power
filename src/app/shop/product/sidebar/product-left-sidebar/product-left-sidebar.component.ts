@@ -16,6 +16,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   @Input() currency: any = this.productService.Currency;
   @Input() cartModal: boolean = true; // Default False
 
+  public products: Product[];
   public product: Product = {};
   public counter: number = 1;
   public activeSlide: any = 0;
@@ -32,23 +33,24 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
     public productService: ProductService) {
-    this.route.paramMap.subscribe(response => {
-      
-      const products = JSON.parse(localStorage.getItem('products'));
 
-      const prod = products.find(p => {
+      this.products = JSON.parse(localStorage.getItem('products'));
+    
+  }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(response => {
+  
+      const prod = this.products.find(p => {
         return p.code == response.get('slug').toString().split('-').pop();
     } );
 
       this.product = prod;
 
+      if(this.Color(this.product.variants).length === 1){
+        this.selectedColor = this.Color(this.product.variants)[0];
+      } 
     });
-  }
-
-  ngOnInit(): void {
-    if(this.Color(this.product.variants).length === 1){
-      this.selectedColor = this.Color(this.product.variants)[0];
-    }    
   }
 
   // Get Product Color
