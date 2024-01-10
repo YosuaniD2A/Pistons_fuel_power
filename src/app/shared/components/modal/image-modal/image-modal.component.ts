@@ -26,15 +26,16 @@ export class ImageModalComponent {
 
   constructor(private router: Router) { }
 
-  goShop(){
+  goShop() {
     const products = JSON.parse(localStorage.getItem('products'));
     const productLinked = products.find(prod => prod.id == this.image.products_id);
 
-    if (productLinked) {      
-      // Navegar a la nueva ruta con el título del producto
-      this.router.navigate(['/shop/product', productLinked.code]);
+    if (productLinked) {
+      const cleanedTitle = productLinked.title.replace(/ /g, '-').trim();
+      const code = productLinked.code || '';
+      const cleanedCode = code.replace(/ /g, '');
+      this.router.navigate([`/shop/product/${cleanedTitle}-${cleanedCode}`]);
     }
-
   }
 
   storeProduct(product: any){

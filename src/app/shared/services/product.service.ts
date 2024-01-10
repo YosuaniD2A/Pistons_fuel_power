@@ -97,9 +97,11 @@ export class ProductService {
     //     return item.title.replace(' ', '-') === slug; 
     //   }); 
     // }));
+    const codePart = slug.split('-').pop();
+    
     return  from(this.products()).pipe(map(items => { 
       return items.find((item: any) => { 
-        return item.code === slug; 
+        return item.code === codePart; 
       }); 
     }));
   }

@@ -26,4 +26,11 @@ export class ProductBoxVerticalSliderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getProductRoute(product: any): string {
+    const cleanedTitle = product.title.replace(/ /g, '-').trim();
+    const code = product.code || ''; // Asegurándonos de que code tenga un valor
+    const cleanedCode = code.replace(/ /g, '');
+    return `/shop/product/${cleanedTitle}-${cleanedCode}`;
+  }
+
 }

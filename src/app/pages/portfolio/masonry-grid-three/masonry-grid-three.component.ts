@@ -30,19 +30,19 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute, private galleryService: GalleryService, private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.collection = params.collection ? params.collection : 'all';
-  
+
       if (this.collection === "Muscle cars")
         this.collection = "Muscle_cars";
-  
+
       this.galleryService.getGallery.subscribe(response => {
         this.AllImage = response;
         this.MuscleImage = response.filter(item => item.collection == 'Muscle_cars');
         this.MotorsImages = response.filter(item => item.collection == 'Motorcycles');
         this.ClassicImages = response.filter(item => item.collection == 'Classics');
         this.BadgesImages = response.filter(item => item.collection == 'Badges');
-        
+
         console.log(this.Images);
-  
+
         this.filter(this.collection);
 
         console.log(this.Images);
@@ -52,8 +52,8 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.showModal = false;
-  
-    
+
+
 
     // this.AllImage = [
     //   new Image(1, { img: 'https://www.dropbox.com/scl/fi/3tjybtha0r4q7dopr28pp/HP-Power-Pistons-Fuel-Power.jpeg?rlkey=9j557ibhxe1ddxil9u1zkugle&dl=1' }),
@@ -168,21 +168,6 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
         itemSelector: '.isotopeSelector'
       });
     }, 1000);
-  }
-
-  goShop(id: number){
-    const products = JSON.parse(localStorage.getItem('products'));
-    const productLinked = products.find(prod => prod.id == id);
-
-    if (productLinked) {      
-      // Navegar a la nueva ruta con el título del producto
-      this.router.navigate(['/shop/product', productLinked.code]);
-    }
-
-  }
-
-  storeProduct(product: any){
-    localStorage['productDetail'] = JSON.stringify(product);
   }
 
 

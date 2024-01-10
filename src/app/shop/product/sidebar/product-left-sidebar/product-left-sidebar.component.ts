@@ -37,12 +37,11 @@ export class ProductLeftSidebarComponent implements OnInit {
       const products = JSON.parse(localStorage.getItem('products'));
 
       const prod = products.find(p => {
-        return p.code == response.get('slug').toString()
+        return p.code == response.get('slug').toString().split('-').pop();
     } );
 
       this.product = prod;
-      
-    //  this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
+
     });
   }
 

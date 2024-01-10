@@ -24,13 +24,13 @@
                 <tbody class="cartBody" >
                     <tr *ngFor="let product of products">
                         <td>
-                            <a [routerLink]="['/shop/product', product.code]" (click)="storeProduct(product)">
+                            <a [routerLink]="getProductRoute(product)">
                                 <img [src]="product.images[0].img_url" [alt]="product.images[0].alt">
                             </a>
                         </td>
                         <td>
                             <div class="text-start">
-                                <a [routerLink]="['/shop/product', product.code]">{{ product.title | titlecase }}</a>
+                                <a [routerLink]="getProductRoute(product)">{{ product.title | titlecase }}</a>
                                 <p>SKU: {{product.sku}}</p>
                             </div>
                             <div class="mobile-cart-content row">

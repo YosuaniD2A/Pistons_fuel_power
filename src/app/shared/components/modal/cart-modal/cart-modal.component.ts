@@ -79,4 +79,11 @@ export class CartModalComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modalService.dismissAll();
   }
 
+  getProductRoute(product: any): string {
+    const cleanedTitle = product.title.replace(/ /g, '-').trim();
+    const code = product.code || ''; // Asegurándonos de que code tenga un valor
+    const cleanedCode = code.replace(/ /g, '');
+    return `/shop/product/${cleanedTitle}-${cleanedCode}`;
+  }
+
 }
