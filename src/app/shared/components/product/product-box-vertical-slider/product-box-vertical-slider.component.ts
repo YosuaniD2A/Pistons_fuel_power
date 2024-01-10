@@ -26,7 +26,4 @@ export class ProductBoxVerticalSliderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  storeProduct(product: any){
-    localStorage['productDetail'] = JSON.stringify(product);
-  }
 }

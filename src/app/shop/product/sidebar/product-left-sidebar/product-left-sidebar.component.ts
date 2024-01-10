@@ -33,11 +33,17 @@ export class ProductLeftSidebarComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,
     public productService: ProductService) {
     this.route.paramMap.subscribe(response => {
-      // console.log(response.get('slug'));
       
-     this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
+      const products = JSON.parse(localStorage.getItem('products'));
+
+      const prod = products.find(p => {
+        return p.code == response.get('slug').toString()
+    } );
+
+      this.product = prod;
+      
+    //  this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
     });
-    // this.product = JSON.parse(localStorage.getItem('productDetail')) || {};
   }
 
   ngOnInit(): void {

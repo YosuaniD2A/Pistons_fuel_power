@@ -37,6 +37,9 @@ export class ProductService {
       const response = await lastValueFrom(this.http.get<{ data: Product[] }>(`${environment.apiURL}/products/getAllFullProducts`));
       const products = response.data.filter(prod => {
         return prod.sale !== false;
+      }).map(prod => {
+        prod.code = this.encodeProduct(prod.category, prod.type, prod.id);
+        return prod;
       });
   
       localStorage['products'] = JSON.stringify(products);
@@ -63,15 +66,40 @@ export class ProductService {
   // public get getProducts(): Observable<Product[]> {
   //   return this.products;
   // }
+  encodeProduct(category, type, id) {
+    let typeCode = "";
+    switch (type) {
+      case "T-shirt":
+        typeCode = "TSA";
+        break;
+      case "Hoodie":
+        typeCode = "HOA";
+        break;
+      case "Sweatshirt":
+        typeCode = "SWA";
+        break;
+      // Agrega más casos según tus tipos
+      default:
+        typeCode = "OTH"; // Código por defecto para otros tipos
+    }
+    const idCode = String(id).padStart(5, '0'); // Completar con ceros delante hasta 5 cifras
+    return category.substring(0, 2).toUpperCase() + typeCode + idCode;
+  }
+
   public get getProducts(): Observable<Product[]> {
     return from(this.products());
   }
 
   // Get Products By Slug
   public getProductBySlug(slug: string): Observable<Product | undefined> {
+    // return  from(this.products()).pipe(map(items => { 
+    //   return items.find((item: any) => { 
+    //     return item.title.replace(' ', '-') === slug; 
+    //   }); 
+    // }));
     return  from(this.products()).pipe(map(items => { 
       return items.find((item: any) => { 
-        return item.title.replace(' ', '-') === slug; 
+        return item.code === slug; 
       }); 
     }));
   }

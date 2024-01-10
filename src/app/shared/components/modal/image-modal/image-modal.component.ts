@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef  } from '@angular/core';
+import { Router } from '@angular/router';
 // import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,7 +10,7 @@ import { Component, Input, Output, EventEmitter, ViewChild, ElementRef  } from '
 export class ImageModalComponent {
 
   @Input() show: boolean;
-  @Input() imageUrl: string;
+  @Input() image: any;
   @Output() closeModal = new EventEmitter();
 
   rotationDegrees: number = 0;
@@ -23,8 +24,22 @@ export class ImageModalComponent {
 
   @ViewChild('imageContainer') imageContainer: ElementRef;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
+  goShop(){
+    const products = JSON.parse(localStorage.getItem('products'));
+    const productLinked = products.find(prod => prod.id == this.image.products_id);
+
+    if (productLinked) {      
+      // Navegar a la nueva ruta con el título del producto
+      this.router.navigate(['/shop/product', productLinked.code]);
+    }
+
+  }
+
+  storeProduct(product: any){
+    localStorage['productDetail'] = JSON.stringify(product);
+  }
 
   rotateRight() {
     this.rotationDegrees += 90;

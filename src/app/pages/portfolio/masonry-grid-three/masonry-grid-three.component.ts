@@ -25,7 +25,7 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
   imagenCargada = false;
 
   showModal: boolean = false;
-  selectedImageUrl: string = '';
+  selectedImage: any;
 
   constructor(private route: ActivatedRoute, private galleryService: GalleryService, private router: Router) {
     this.route.queryParams.subscribe(params => {
@@ -174,13 +174,9 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
     const products = JSON.parse(localStorage.getItem('products'));
     const productLinked = products.find(prod => prod.id == id);
 
-    if (productLinked) {
-      this.storeProduct(productLinked);
-      // Reemplazar espacios en blanco con guiones en el título
-      const formattedTitle = productLinked.title.replace(' ', '-');
-      
+    if (productLinked) {      
       // Navegar a la nueva ruta con el título del producto
-      this.router.navigate(['/shop/product', formattedTitle]);
+      this.router.navigate(['/shop/product', productLinked.code]);
     }
 
   }
@@ -190,14 +186,14 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
   }
 
 
-  // openModal(imageUrl: string) {
-  //   this.selectedImageUrl = imageUrl;
-  //   this.showModal = true;
-  // }
+  openModal(image: any) {
+    this.selectedImage = image;
+    this.showModal = true;
+  }
 
-  // closeModal() {
-  //   this.showModal = false;
-  // }
+  closeModal() {
+    this.showModal = false;
+  }
 
   cargarImagenPorDefecto(image: any) {
     image.modal.img = 'assets/images/portfolio/1.jpg';

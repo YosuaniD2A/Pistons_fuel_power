@@ -31,7 +31,8 @@
             <div class="col-lg-2 col-sm-3 isotopeSelector" [ngClass]="galleryFilter" *ngFor="let image of Images">
                 <div class="overlay">
                     <div class="border-portfolio">
-                        <a href="javascript:void(0)" (click)="goShop(image.products_id)">
+                        <a href="javascript:void(0)" (click)=" openModal(image)">
+                            <!-- goShop(image.products_id); -->
                             <img [defaultImage]="image.img_url ? image.img_url : '../assets/images/product/placeholder.jpg'"
                                 [lazyLoad]="image.img_url ? image.img_url : image.img_url" (load)="imageCloaded()"
                                 class="img-fluid lazy-loading" alt="" />
@@ -52,4 +53,4 @@
     </div>
 </section>
 <!-- Section ends -->
-<!-- <app-image-modal [show]="showModal" [imageUrl]="selectedImageUrl" (closeModal)="closeModal()"></app-image-modal> -->
+<app-image-modal [show]="showModal" [image]="selectedImage" (closeModal)="closeModal()"></app-image-modal>

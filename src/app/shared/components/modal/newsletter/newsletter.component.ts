@@ -22,9 +22,9 @@ export class NewsletterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    if(localStorage.getItem("newsletter") !== 'true')
-       this.openModal();
-    localStorage.setItem("newsletter", 'true');
+    // if(localStorage.getItem("newsletter") !== 'true')
+    //    this.openModal();
+    // localStorage.setItem("newsletter", 'true');
   }
 
   openModal() {
