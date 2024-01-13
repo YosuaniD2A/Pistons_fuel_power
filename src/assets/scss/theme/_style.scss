@@ -1045,11 +1045,11 @@ header {
     //     position: absolute;
     //     right: 3px;
     // }
-        // &:after {
-        //     content: "\f107";
-        //     font-family: $font-awesome;
-        //     margin-left: 5px;
-        // }
+    // &:after {
+    //     content: "\f107";
+    //     font-family: $font-awesome;
+    //     margin-left: 5px;
+    // }
 
     .onhover-show-div {
         top: 50px;
@@ -3593,10 +3593,11 @@ header {
     // padding-bottom: 190px;
     background-position: center;
 
-    .layer_blur_parallax{
+    .layer_blur_parallax {
         padding-top: 190px;
         padding-bottom: 190px;
-        backdrop-filter: blur(3px); /* Ajusta el valor de desenfoque según tus preferencias */
+        backdrop-filter: blur(3px);
+        /* Ajusta el valor de desenfoque según tus preferencias */
         background-color: rgba(5, 5, 5, 0.151);
     }
 
@@ -8094,11 +8095,12 @@ ngx-loading-bar {
     }
 }
 
-.hero{
+.hero {
     min-height: 80vh;
     position: relative;
 
-    video, img{
+    video,
+    img {
         position: absolute;
         top: 0;
         left: 0;
@@ -9274,7 +9276,8 @@ ngx-loading-bar {
             line-height: 20px;
             margin-bottom: 20px;
 
-            span, .detail {
+            span,
+            .detail {
                 float: right;
                 font-size: 18px;
                 line-height: 20px;
@@ -9340,6 +9343,7 @@ ngx-loading-bar {
             margin-bottom: 10px;
             font-size: 18px;
 
+
             .count {
                 position: relative;
                 font-size: 18px;
@@ -9359,6 +9363,13 @@ ngx-loading-bar {
             }
         }
     }
+}
+
+.pay_method {
+    font-size: 18px;
+    font-weight: 400;
+    color: #cfd4da;
+    line-height: 20px;
 }
 
 .payment-box {
@@ -13147,6 +13158,7 @@ body.rtl {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
             p {
                 text-align: center;
             }

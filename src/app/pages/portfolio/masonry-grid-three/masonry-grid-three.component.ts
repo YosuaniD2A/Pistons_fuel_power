@@ -36,7 +36,7 @@ export class MasonryGridThreeComponent implements OnInit, AfterViewInit {
 
       this.galleryService.getGallery.subscribe(response => {
         this.AllImage = response;
-        this.MuscleImage = response.filter(item => item.collection == 'Muscle_cars');
+        this.MuscleImage = response.filter(item => item.collection == 'Muscle cars');
         this.MotorsImages = response.filter(item => item.collection == 'Motorcycles');
         this.ClassicImages = response.filter(item => item.collection == 'Classics');
         this.BadgesImages = response.filter(item => item.collection == 'Badges');

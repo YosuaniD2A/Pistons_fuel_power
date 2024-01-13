@@ -6,6 +6,8 @@ import { environment } from '../../../environments/environment';
 import { Product } from "../../shared/classes/product";
 import { ProductService } from "../../shared/services/product.service";
 import { OrderService } from "../../shared/services/order.service";
+import { PaymentService } from 'src/app/shared/services/payment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -22,7 +24,9 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private fb: UntypedFormBuilder,
     public productService: ProductService,
-    private orderService: OrderService) { 
+    private orderService: OrderService,
+    private paymentService: PaymentService,
+    private router: Router) { 
     this.checkoutForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
@@ -49,21 +53,29 @@ export class CheckoutComponent implements OnInit {
   }
 
   // Stripe Payment Gateway
-  stripeCheckout() {
-    var handler = (<any>window).StripeCheckout.configure({
-      key: environment.stripe_token, // publishble key
-      locale: 'auto',
-      token: (token: any) => {
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
-        this.orderService.createOrder(this.products, this.checkoutForm.value, token.id, this.amount);
-      }
+  async stripeCheckout() {
+    // var handler = (<any>window).StripeCheckout.configure({
+    //   key: environment.stripe_token, // publishble key
+    //   locale: 'auto',
+    //   token: (token: any) => {
+    //     // You can access the token ID with `token.id`.
+    //     // Get the token ID to your server-side code for use.
+    //     this.orderService.createOrder(this.products, this.checkoutForm.value, token.id, this.amount);
+    //   }
+    // });
+    // handler.open({
+    //   name: 'Pistons Fuel Power',
+    //   description: 'Online Fashion Store',
+    //   amount: this.amount * 100
+    // }) 
+    this.orderService.createOrder(this.products, this.checkoutForm.value, this.amount);
+    const response = await this.paymentService.checkoutStripe({
+      products: this.products, 
+      amount: this.amount, 
+      shippingDetails: this.checkoutForm.value
     });
-    handler.open({
-      name: 'Pistons Fuel Power',
-      description: 'Online Fashion Store',
-      amount: this.amount * 100
-    }) 
+    window.location.href = response.url;
+    
   }
 
   // Paypal Payment Gateway

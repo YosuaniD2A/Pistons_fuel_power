@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  stripe_token: 'STRIPE_TOKEN',
+  stripe_token: 'pk_test_51OXnbzHafjd0gJ8NRzxGQNzEfRi7Kq3mmzQ9XeRRrfDDAS9XpwG4QQ1OlfvW7KATUQxlc18jFAvqQtvhnfPwxw5m008hhXIKQc',
   paypal_token: 'PAYPAL_TOKEN',
 
   // apiURL: 'localhost:3000/api/shop'
