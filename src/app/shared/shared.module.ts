@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 // Header and Footer Components
 import { HeaderOneComponent } from './header/header-one/header-one.component';
+import { HeaderThreeComponent } from './header/header-three/header-three.component'; 
 import { FooterOneComponent } from './footer/footer-one/footer-one.component';
 
 
@@ -38,6 +39,8 @@ import { SkeletonProductBoxComponent } from './components/skeleton/skeleton-prod
 // Layout Box
 import { LayoutBoxComponent } from './components/layout-box/layout-box.component';
 
+import { LeftMenuComponent } from './components/left-menu/left-menu.component';
+
 // Tap To Top
 import { TapToTopComponent } from './components/tap-to-top/tap-to-top.component';
 
@@ -47,9 +50,11 @@ import { DiscountPipe } from './pipes/discount.pipe';
 @NgModule({
   declarations: [
     HeaderOneComponent,
+    HeaderThreeComponent,
     FooterOneComponent,
     MenuComponent,
     SettingsComponent,
+    LeftMenuComponent,
     BreadcrumbComponent,
     CategoriesComponent,
     ProductBoxOneComponent,
@@ -91,6 +96,7 @@ import { DiscountPipe } from './pipes/discount.pipe';
     NgxSkeletonLoaderModule,
     TranslateModule,
     HeaderOneComponent,
+    HeaderThreeComponent,
     FooterOneComponent,
     BreadcrumbComponent,
     CategoriesComponent,

@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 
 import { FashionOneComponent } from './fashion/fashion-one/fashion-one.component';
+import { FashionTwoComponent } from './fashion/fashion-two/fashion-two.component';
 
 // Widgest Components
 import { SliderComponent } from './widgets/slider/slider.component';
@@ -12,9 +13,11 @@ import { LogoComponent } from './widgets/logo/logo.component';
 import { ServicesComponent } from './widgets/services/services.component';
 import { CollectionComponent } from './widgets/collection/collection.component';
 
+
 @NgModule({
   declarations: [
     FashionOneComponent,
+    FashionTwoComponent,
     // Widgest Components
     SliderComponent,
     BlogComponent,

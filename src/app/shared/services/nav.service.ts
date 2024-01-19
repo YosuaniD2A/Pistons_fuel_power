@@ -41,6 +41,27 @@ export class NavService {
 			title: 'home', type: 'link', active: false, path: '/home'
 		},
 		{
+			title: 'home2', type: 'link', active: false, path: '/home/two'
+		},
+		{
+			title: 'Gallery', type: 'link', active: false, path: '/page/gallery'
+		},
+		{
+			title: 'About us', type: 'link', active: false, path: '/page/aboutus'
+		},
+		{
+			title: 'FAQ', type: 'link', active: false, path: '/page/faq'
+		}
+	];
+
+	LEFTMENUITEMS: Menu[] = [
+		{
+			title: 'home', type: 'link', active: false, path: '/home'
+		},
+		{
+			title: 'home2', type: 'link', active: false, path: '/home/two'
+		},
+		{
 			title: 'Gallery', type: 'link', active: false, path: '/page/gallery'
 		},
 		{
@@ -54,7 +75,7 @@ export class NavService {
 	// Array
 
 	items = new BehaviorSubject<Menu[]>(this.MENUITEMS);
-	// leftMenuItems = new BehaviorSubject<Menu[]>(this.LEFTMENUITEMS);
+	leftMenuItems = new BehaviorSubject<Menu[]>(this.LEFTMENUITEMS);
 
 	private loadCollections() {
 		// Obtén las primeras cuatro colecciones del servicio CollectionService
@@ -67,6 +88,7 @@ export class NavService {
 			  type: 'link',
 			};
 		  });
+
 		  dynamicMenuItems.push({
 			path: '/shop',
 			  param: 'All',
@@ -75,12 +97,20 @@ export class NavService {
 		  })
 	
 		  // Agrega las colecciones dinámicas al menú
-		  this.MENUITEMS.splice(1, 0, {
+		  this.MENUITEMS.splice(2, 0, {
 			title: 'collections',
 			type: 'sub',
 			active: false,
 			children: dynamicMenuItems,
 		  });
+
+		  this.LEFTMENUITEMS.splice(2, 0, {
+			title: 'collections',
+			type: 'sub',
+			active: false,
+			children: dynamicMenuItems,
+		  });
+		  
 		});
 	  }
 }

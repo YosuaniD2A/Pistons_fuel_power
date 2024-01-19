@@ -1,0 +1,85 @@
+<app-header-three></app-header-three>
+<!-- <app-breadcrumb [title]="'Gallery'" [breadcrumb]="'Gallery'"></app-breadcrumb> -->
+<!-- section start -->
+<section class="filter-section">
+    <div class="title1 mt-5">
+        <h2 class="title-inner1">Pistons Fuel <span>&</span> Power</h2>
+    </div>
+</section>
+<div class="d-flex">
+    <section class="filter-home">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- <div class="title1 mt-5">
+                    <h2 class="title-inner1">Pistons Fuel <span>&</span> Power</h2>
+                </div> -->
+                    <div class="filter-container isotopeFilters">
+                        <ul class="filter">
+                            <li [class.active]="galleryFilter == 'all'"><a href="javascript:void(0)"
+                                    (click)="filter('all')">All </a></li>
+                            <li [class.active]="galleryFilter == 'Muscle_cars'"><a href="javascript:void(0)"
+                                    (click)="filter('Muscle_cars')">Muscle cars</a></li>
+                            <li [class.active]="galleryFilter == 'Motorcycles'"><a href="javascript:void(0)"
+                                    (click)="filter('Motorcycles')">Motorcycles</a></li>
+                            <li [class.active]="galleryFilter == 'Classics'"><a href="javascript:void(0)"
+                                    (click)="filter('Classics')">Classic</a></li>
+                            <li [class.active]="galleryFilter == 'Badges'"><a href="javascript:void(0)"
+                                    (click)="filter('Badges')">Badges</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="portfolio-section pt-0 port-col zoom-gallery flex-grow-1">
+        <div class="gallery-section ">
+            <!-- <div class="row isotopeContainer">
+            <div class="col-lg-2 col-sm-3 isotopeSelector" [ngClass]="galleryFilter" *ngFor="let image of Images">
+                <div class="overlay">
+                    <div class="border-portfolio">
+                        <a href="javascript:void(0)" (click)=" openModal(image)">
+                            <img [defaultImage]="image.img_url ? image.img_url : '../assets/images/product/placeholder.jpg'"
+                                [lazyLoad]="image.img_url ? image.img_url : image.img_url" (load)="imageCloaded()"
+                                class="img-fluid lazy-loading" alt="" />
+
+                            <div *ngIf="mostrarImagenDeCarga && !imagenCargada" class="p-5">
+                                <img src="assets/images/spinner_loader.gif" width="60px" alt="Cargando..." />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center section-b-space no-found" *ngIf="Images == undefined || Images?.length == 0">
+            <img src="assets/images/empty_search.png" class="img-fluid mb-4">
+            <h3>Sorry! No images were found in this gallery collection!!! </h3>
+            <p>Please try searching in one of our other collections.</p>
+        </div> -->
+            <div class="container_img">
+                <div *ngFor="let image of Images; let i = index" (mouseenter)="switchOverlay(i, true)"
+                    (mouseleave)="switchOverlay(i, false)">
+                    <div class="overlay" *ngIf="showOverlay[i]">
+                        <button class="btn-goshop rounded-pill" (click)="goShop(image)">Go shop</button>
+                        <button class="btn-see rounded-circle" (click)=" openModal(image)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-three-dots" viewBox="0 0 16 16">
+                                <path
+                                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="javascript:void(0)">
+                        <img [src]="image.img_url" (load)="handleOnLoadImage()" class="img-fluid lazy-loading" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Section ends -->
+<app-image-modal [show]="showModal" [image]="selectedImage" (closeModal)="closeModal()"></app-image-modal>
+
+<app-newsletter></app-newsletter>
+
+<app-footer-one></app-footer-one>

@@ -1,5 +1,6 @@
 <app-breadcrumb [title]="'Gallery'" [breadcrumb]="'Gallery'"></app-breadcrumb>
 <!-- section start -->
+
 <section class="filter-section">
     <div class="container">
         <div class="row">
@@ -8,7 +9,7 @@
                     <h2 class="title-inner1">gallery</h2>
                 </div>
                 <div class="filter-container isotopeFilters">
-                    <ul class="list-inline filter">
+                    <ul class="filter">
                         <li [class.active]="galleryFilter == 'all'"><a href="javascript:void(0)"
                                 (click)="filter('all')">All </a></li>
                         <li [class.active]="galleryFilter == 'Muscle_cars'"><a href="javascript:void(0)"
@@ -32,7 +33,6 @@
                 <div class="overlay">
                     <div class="border-portfolio">
                         <a href="javascript:void(0)" (click)=" openModal(image)">
-                            <!-- goShop(image.products_id); -->
                             <img [defaultImage]="image.img_url ? image.img_url : '../assets/images/product/placeholder.jpg'"
                                 [lazyLoad]="image.img_url ? image.img_url : image.img_url" (load)="imageCloaded()"
                                 class="img-fluid lazy-loading" alt="" />
