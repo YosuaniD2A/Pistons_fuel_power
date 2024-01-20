@@ -437,7 +437,8 @@ header {
     cursor: pointer;
     i {
         font-size: 24px;
-        color: var(--theme-deafult);
+        // color: var(--theme-deafult);
+        color: $white-5;
     }
 }
 
@@ -1592,7 +1593,7 @@ header {
 @media (max-width: 480px) {
     .brand-logo {
         img {
-            height: 25px;
+            // height: 25px;
         }
     }
 }

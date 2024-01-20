@@ -6456,6 +6456,10 @@ ngx-loading-bar {
             color: $grey2;
             font-weight: 600;
         }
+
+        .divider{
+            padding: 0px 5px;
+        }
     }
 }
 
@@ -12197,16 +12201,19 @@ body.rtl {
         }
     }
 
-    .breadcrumb-item {
-        +.breadcrumb-item {
+    .breadcrumb-elem {
+        +.breadcrumb-elem {
             padding-right: 0.5rem;
             padding-left: 0;
 
             &:before {
+                color: $white-5 !important;
                 padding-right: 0;
                 padding-left: 0.5rem;
+                
             }
         }
+
     }
 
     .top-header {

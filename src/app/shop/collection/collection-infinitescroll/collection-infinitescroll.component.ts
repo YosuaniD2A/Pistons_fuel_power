@@ -12,7 +12,7 @@ import * as _ from 'lodash'
 })
 export class CollectionInfinitescrollComponent implements OnInit {
 
-  public grid: string = 'col-xl-3 col-md-6';
+  public grid: string = 'col-xl-3 col-md-4 col-6';
   public layoutView: string = 'grid-view';
   public all_products: any[] = [];
   public products: any[] = [];

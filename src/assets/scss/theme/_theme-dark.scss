@@ -438,7 +438,7 @@ body {
             color: #e6e6e6;
         }
     }
-    .breadcrumb-item {
+    .breadcrumb-elem {
         &.active {
             color: $white-3;
         }
@@ -446,6 +446,10 @@ body {
     .breadcrumb-section {
         .breadcrumb {
             a {
+                color: $grey-about;
+            }
+
+            .divider{
                 color: $grey-about;
             }
         }
@@ -459,7 +463,7 @@ body {
             }
         }
         .search-btn-mobile{
-            filter: brightness(100);
+            filter: brightness(5);
         }
         .menu-right {
             .icon-nav {

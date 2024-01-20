@@ -81,7 +81,7 @@ export class FashionTwoComponent implements OnInit {
   private updateBaseWidth(): void {
     // Define lógica para determinar baseWidth según el tamaño de la pantalla
     // Por ejemplo, si el ancho de la ventana es menor que cierto umbral, establece baseWidth en 100; de lo contrario, en 155
-    this.baseWidth = window.innerWidth <= 410 ? 100 : 155;
+    this.baseWidth = window.innerWidth <= 410 ? 120 : 155;
     this.gutter = window.innerWidth <= 410 ? 10 : 20;
   }
 
