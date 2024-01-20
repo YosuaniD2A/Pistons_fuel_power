@@ -40,12 +40,12 @@ export class NavService {
 		{
 			title: 'home', type: 'link', active: false, path: '/home'
 		},
-		{
-			title: 'home2', type: 'link', active: false, path: '/home/two'
-		},
-		{
-			title: 'Gallery', type: 'link', active: false, path: '/page/gallery'
-		},
+		// {
+		// 	title: 'home2', type: 'link', active: false, path: '/home/two'
+		// },
+		// {
+		// 	title: 'Gallery', type: 'link', active: false, path: '/page/gallery'
+		// },
 		{
 			title: 'About us', type: 'link', active: false, path: '/page/aboutus'
 		},
@@ -58,12 +58,12 @@ export class NavService {
 		{
 			title: 'home', type: 'link', active: false, path: '/home'
 		},
-		{
-			title: 'home2', type: 'link', active: false, path: '/home/two'
-		},
-		{
-			title: 'Gallery', type: 'link', active: false, path: '/page/gallery'
-		},
+		// {
+		// 	title: 'home2', type: 'link', active: false, path: '/home/two'
+		// },
+		// {
+		// 	title: 'Gallery', type: 'link', active: false, path: '/page/gallery'
+		// },
 		{
 			title: 'About us', type: 'link', active: false, path: '/page/aboutus'
 		},
@@ -97,14 +97,14 @@ export class NavService {
 		  })
 	
 		  // Agrega las colecciones dinámicas al menú
-		  this.MENUITEMS.splice(2, 0, {
+		  this.MENUITEMS.splice(1, 0, {
 			title: 'collections',
 			type: 'sub',
 			active: false,
 			children: dynamicMenuItems,
 		  });
 
-		  this.LEFTMENUITEMS.splice(2, 0, {
+		  this.LEFTMENUITEMS.splice(1, 0, {
 			title: 'collections',
 			type: 'sub',
 			active: false,

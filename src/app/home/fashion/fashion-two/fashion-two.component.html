@@ -7,7 +7,7 @@
     </div>
 </section>
 <div class="d-flex">
-    <section class="filter-home">
+    <section class="filter-home" *ngIf="false">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -33,29 +33,7 @@
         </div>
     </section>
     <section class="portfolio-section pt-0 port-col zoom-gallery flex-grow-1">
-        <div class="gallery-section ">
-            <!-- <div class="row isotopeContainer">
-            <div class="col-lg-2 col-sm-3 isotopeSelector" [ngClass]="galleryFilter" *ngFor="let image of Images">
-                <div class="overlay">
-                    <div class="border-portfolio">
-                        <a href="javascript:void(0)" (click)=" openModal(image)">
-                            <img [defaultImage]="image.img_url ? image.img_url : '../assets/images/product/placeholder.jpg'"
-                                [lazyLoad]="image.img_url ? image.img_url : image.img_url" (load)="imageCloaded()"
-                                class="img-fluid lazy-loading" alt="" />
-
-                            <div *ngIf="mostrarImagenDeCarga && !imagenCargada" class="p-5">
-                                <img src="assets/images/spinner_loader.gif" width="60px" alt="Cargando..." />
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 text-center section-b-space no-found" *ngIf="Images == undefined || Images?.length == 0">
-            <img src="assets/images/empty_search.png" class="img-fluid mb-4">
-            <h3>Sorry! No images were found in this gallery collection!!! </h3>
-            <p>Please try searching in one of our other collections.</p>
-        </div> -->
+        <div class="gallery-section container-2">
             <div class="container_img">
                 <div *ngFor="let image of Images; let i = index" (mouseenter)="switchOverlay(i, true)"
                     (mouseleave)="switchOverlay(i, false)">

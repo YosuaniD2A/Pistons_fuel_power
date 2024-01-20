@@ -7,11 +7,11 @@ import { FashionTwoComponent } from './fashion/fashion-two/fashion-two.component
 const routes: Routes = [
   {
     path: '',
-    component: FashionOneComponent
+    component: FashionTwoComponent
   },
   {
     path: 'two',
-    component: FashionTwoComponent
+    component: FashionOneComponent
   }
 ];
 

@@ -1,72 +1,77 @@
 <!-- header start -->
 <header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
-    <div class="mobile-fix-option"></div>
-    <div class="top-header" *ngIf="topbar">
-      <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="header-contact">
-                <ul>
-                  <li>Welcome to Our store Multikart</li>
-                  <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6 text-end">
-              <ul class="header-dropdown">
-                <!-- <li class="compare">
-                  <a [routerLink]="['/shop/compare']"><i class="fa fa-random" aria-hidden="true"></i>Compare</a>
-                </li>
-                <li class="mobile-wishlist">
-                  <a [routerLink]="['/shop/wishlist']"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a>
-                </li> -->
-                <li class="onhover-dropdown mobile-account">
-                  <i class="fa fa-user" aria-hidden="true"></i> My Account
-                  <ul class="onhover-show-div">
-                    <li>
-                      <a data-lng="en">
-                        Login
-                      </a>
-                    </li>
-                    <li>
-                      <a data-lng="es">
-                        Logout
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+  <div class="mobile-fix-option"></div>
+  <div class="top-header" *ngIf="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="header-contact">
+            <ul>
+              <li>Welcome to Our store Pistons Fuel Power</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: (408) 418 5217</li>
+            </ul>
           </div>
         </div>
+        <div class="col-lg-6 text-end">
+          <ul class="header-dropdown">
+            <li class="onhover-dropdown mobile-account">
+              <a href="https://pistons-fuel-power-dashboard.web.app/auth/login"><i class="fa fa-pie-chart" aria-hidden="true"></i> Dashboard</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="main-menu border-section border-top-0">
-                    <div class="menu-left">
-                        <app-left-menu></app-left-menu>
-                    </div>
-                    <div class="brand-logo layout2-logo headerlogo">
-                        <a [routerLink]="['/home/fashion']">
-                            <img [src]="themeLogo" style="width: 100px;" class="img-fluid" alt="logo">
-                        </a>
-                    </div>
-                    <div class="menu-right pull-right">
-                        <app-settings></app-settings>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="main-menu border-section border-top-0">
+          <div class="menu-left">
+            <app-left-menu></app-left-menu>
+          </div>
+          <!-- <div class="brand-logo layout2-logo headerlogo">
+            <a [routerLink]="['/home/fashion']">
+              <img [src]="themeLogo" style="width: 100px;" class="img-fluid" alt="logo">
+            </a>
+          </div> -->
+          <div class="search-btn-mobile">
+            <img src="assets/images/icon/search.png" class="img-fluid" alt="" (click)="searchToggle()">
+          </div>
+          <div id="search-overlay" class="search-overlay" [ngStyle]="{'display': search ? 'block' : 'none' }">
+            <div> 
+                <span class="closebtn" title="Close Overlay" (click)="searchToggle()">×</span>
+                <div class="overlay-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <form>
+                                    <div class="form-group d-flex gap-2 align-items-center">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="searchInput"
+                                        [ngModelOptions]="{standalone: true}" placeholder="Search a Product">
+                                        <img src="assets/images/icon/search.png" class="img-fluid" alt="" (click)="searchProd()" >
+                                      </div> 
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+          </div>
+          <div class="menu-right pull-right">
+            <app-settings></app-settings>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-12">
-                <!-- <div class="main-nav-center">
+  </div>
+  <div class="container">
+    <div class="row ">
+      <div class="col-lg-12">
+        <!-- <div class="main-nav-center">
                     <app-menu></app-menu>
                 </div> -->
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </header>
 <!-- header end -->

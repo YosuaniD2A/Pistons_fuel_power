@@ -5223,6 +5223,7 @@ background-color: $black;*/
                 }
             }
         }
+       
     }
     .template-password {
         #container {
@@ -5254,6 +5255,7 @@ background-color: $black;*/
                     left: unset;
                     margin-right: 0;
                 }
+                
             }
         }
         .main-nav-center {
@@ -5349,6 +5351,7 @@ background-color: $black;*/
                     }
                 }
             }
+            
         }
         .layout3-menu {
             .main-menu {
@@ -5370,6 +5373,7 @@ background-color: $black;*/
             .brand-logo {
                 transform: translateX(-15%);
             }
+            
         }
         .top-header {
             .header-dropdown {
@@ -7185,6 +7189,35 @@ Fashion-2 Demo Responsive CSS
     .box-layout-body {
         .box-layout {
             margin-top: 0;
+        }
+    }
+
+    .sub-title{
+        .footer-title{
+            h4{
+                margin-top: 20px;
+                text-align: center;
+            }
+        }
+    }
+    .footer-contant {
+        text-align: center;
+        .footer-logo {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .footer-social {
+
+            ul {
+                margin: unset;
+                li {
+                    padding-right: 25px;
+                    padding-left: 0;
+                }
+            }
+        }
+        li{
+            text-align: center;
         }
     }
 }

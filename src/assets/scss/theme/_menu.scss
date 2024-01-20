@@ -1381,9 +1381,10 @@ header {
                 i {
                     font-size: 22px;
                     font-family: $font-themify;
-                    color: $header-font;
+                    color: $header-font !important;
                     &:before {
-                        content: "\e602";
+                        // content: "\e602";
+                        content: "\e684";
                     }
                 }
                 .onhover-show-div {
@@ -1419,6 +1420,11 @@ header {
             .navbar {
                 padding: 30px 45px 30px 0 !important;
             }
+        }
+        .search-btn-mobile{
+            position: absolute;
+            display: inline-block;
+            right: 20px;
         }
         .menu-right {
             .icon-nav {

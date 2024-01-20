@@ -1189,6 +1189,10 @@ header {
                 color: lighten($black, 46.5%);
                 right: 10px;
             }
+
+            img{
+                filter: brightness(100);
+            }
         }
 
         .closebtn {
@@ -1487,6 +1491,10 @@ header {
                 }
             }
         }
+    }
+
+    .search-btn-mobile{
+        display: none;
     }
 
     .menu-right {
@@ -5616,7 +5624,7 @@ footer {
 .footer-social,
 .social-white {
     margin-top: 40px;
-    display: flex;
+    // display: flex;
     align-items: center;
 
     li {
@@ -15027,6 +15035,7 @@ footer {
     .mobile-search {
         display: none;
     }
+    
 }
 
 .form_search {

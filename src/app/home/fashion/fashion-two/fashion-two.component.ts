@@ -9,10 +9,13 @@ import MiniMasonry from "minimasonry";
   templateUrl: './fashion-two.component.html',
   styleUrls: ['./fashion-two.component.scss']
 })
-export class FashionTwoComponent implements OnInit, AfterViewInit {
+export class FashionTwoComponent implements OnInit {
+
   container: ElementRef;
   isLoading: boolean = false;
   miniMasonry: MiniMasonry;
+  gutter: number = 20;
+  baseWidth: number = 155;
 
   public galleryFilter: string;
   public collection: string;
@@ -31,8 +34,7 @@ export class FashionTwoComponent implements OnInit, AfterViewInit {
   showModal: boolean = false;
   selectedImage: any;
 
-  constructor(private route: ActivatedRoute, private galleryService: GalleryService, private router: Router,
-    private renderer: Renderer2, private el: ElementRef) {
+  constructor(private route: ActivatedRoute, private galleryService: GalleryService, private router: Router, private el: ElementRef) {
     this.route.queryParams.subscribe(params => {
       this.collection = params.collection ? params.collection : 'all';
 
@@ -54,54 +56,39 @@ export class FashionTwoComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.showModal = false;
+    this.initMasonry(); 
+  }
 
+  initMasonry(){
     this.container = this.el.nativeElement.querySelector('.container_img');
     this.miniMasonry = new MiniMasonry({
       container: this.container,
+      gutter: this.gutter,
+      baseWidth: this.baseWidth
     });
-
-    // this.renderer.selectRootElement(this.container)
-    //   .querySelectorAll('img')
-    //   .forEach((img: HTMLImageElement) => {
-    //     this.renderer.listen(img, 'load', () => this.handleOnLoadImage());
-    //   });
-
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(function () {
-      // vanilla JS
-      var grid = document.querySelector('.isotopeContainer');
-      new (<any>window).Isotope(grid, {
-        // options...
-        itemSelector: '.isotopeSelector'
-      });
-    }, 1000);
-
-    
   }
 
   handleOnLoadImage(){
     this.miniMasonry.layout();
   };
 
-  // getRandomValueInRange(min, max) {
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // };
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.updateBaseWidth(); // Actualizar baseWidth en tiempo real al cambiar el tamaño de la ventana
+    this.initMasonry();
+  }
 
-  // addNewImages() {
-  //   for (let i = 0; i < 20; i++) {
-  //     const div = this.renderer.createElement('div');
-  //     const img = this.renderer.createElement('img');
-  //     this.renderer.setAttribute(img, 'src', `https://picsum.photos/${this.getRandomValueInRange(200, 500)}/${this.getRandomValueInRange(200, 500)}`);
-  //     this.renderer.listen(img, 'load', () => this.handleOnLoadImage());
-  //     this.renderer.appendChild(div, img);
-  //     this.renderer.appendChild(this.container.nativeElement, div);
-  //   }
-  //   window.setTimeout(() => {
-  //     this.isLoading = false;
-  //   }, 1000);
-  // };
+  private updateBaseWidth(): void {
+    // Define lógica para determinar baseWidth según el tamaño de la pantalla
+    // Por ejemplo, si el ancho de la ventana es menor que cierto umbral, establece baseWidth en 100; de lo contrario, en 155
+    this.baseWidth = window.innerWidth <= 410 ? 100 : 155;
+    this.gutter = window.innerWidth <= 410 ? 10 : 20;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    this.checkScroll();
+  }
 
   isScrollNearBottom() {
     const scrollHeight = document.documentElement.scrollHeight;
@@ -109,11 +96,6 @@ export class FashionTwoComponent implements OnInit, AfterViewInit {
     const clientHeight = document.documentElement.clientHeight;
     return scrollHeight - scrollTop <= clientHeight + 100;
   };
-
-  @HostListener('window:scroll', [])
-  onWindowScroll(): void {
-    this.checkScroll();
-  }
 
   private checkScroll(): void {
     if (this.isScrollNearBottom() && !this.isLoading) {
@@ -185,13 +167,6 @@ export class FashionTwoComponent implements OnInit, AfterViewInit {
     }
 
     this.galleryFilter = term
-
-    // For isotop layout
-    setTimeout(function () {
-      // vanilla JS
-      var grid = document.querySelector('.isotopeContainer');
-      new (<any>window).Isotope(grid, { filter: '.' + term });
-    }, 500);
 
   }
 }
