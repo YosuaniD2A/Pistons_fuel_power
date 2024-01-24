@@ -67,7 +67,7 @@
                                     <div class="field-label">Country</div>
                                     <select name="country" [formControl]="checkoutForm.controls['country']">
                                         <option value="" selected>Select Country</option>
-                                        <option value="USA">USA</option>
+                                        <option value="US">USA</option>
                                     </select>
                                     <div *ngIf="checkoutForm.controls.country.touched && checkoutForm.controls.country.errors?.required"
                                         class="text text-danger">

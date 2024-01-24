@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 const state = {
   checkoutItems: JSON.parse(localStorage['checkoutItems'] || '[]')
@@ -11,7 +13,7 @@ const state = {
 })
 export class OrderService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   // Get Checkout Items
   public get checkoutItems(): Observable<any> {
@@ -23,17 +25,41 @@ export class OrderService {
   }
 
   // Create order
-  public createOrder(products: any, details: any, amount: any) {
+  public createOrder(products: any, details: any, orderId: string, amount: any) {
     var item = {
         shippingDetails: details,
-        products: products,
-        // orderId: orderId,
+        products,
+        orderId,
         totalAmount: amount
     };
     state.checkoutItems = item;
     localStorage.setItem("checkoutItems", JSON.stringify(item));
-    localStorage.removeItem("cartItems");
+    // localStorage.removeItem("cartItems");
     // this.router.navigate(['/shop/checkout/success', orderId]);
+  }
+
+  public async registerOrder(orderData: any): Promise<any> {
+    try {
+      const response = await lastValueFrom(this.http.post<any>(`${environment.apiURL}/orders/createOrder`, orderData));
+      return response;
+
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al registrar la orden:', error);
+      throw error;
+    }
+  }
+
+  public async getByOrderId(orderId): Promise<any> {
+    try {
+      const response = await lastValueFrom(this.http.get<any>(`${environment.apiURL}/orders/getByOrderId/${orderId}`));
+      return response;
+      
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al registrar la orden:', error);
+      throw error;
+    }
   }
   
 }

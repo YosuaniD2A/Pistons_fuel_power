@@ -3,6 +3,8 @@ import { Image } from '@ks89/angular-modal-gallery';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 import MiniMasonry from "minimasonry";
+import { Product } from 'src/app/shared/classes/product';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-fashion-two',
@@ -17,6 +19,7 @@ export class FashionTwoComponent implements OnInit {
   gutter: number = 20;
   baseWidth: number = 155;
 
+  public products: Product[] = [];
   public galleryFilter: string;
   public collection: string;
   public Images: any[] = [];
@@ -34,7 +37,10 @@ export class FashionTwoComponent implements OnInit {
   showModal: boolean = false;
   selectedImage: any;
 
-  constructor(private route: ActivatedRoute, private galleryService: GalleryService, private router: Router, private el: ElementRef) {
+  constructor(private route: ActivatedRoute, private galleryService: GalleryService, private router: Router, private el: ElementRef, public productService: ProductService) {
+    this.productService.getProducts.subscribe(response => {
+      this.products = response.filter(item => item.type == 'T-shirt');
+    });
     this.route.queryParams.subscribe(params => {
       this.collection = params.collection ? params.collection : 'all';
 

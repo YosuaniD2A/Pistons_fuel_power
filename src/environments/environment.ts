@@ -8,7 +8,10 @@ export const environment = {
   paypal_token: 'PAYPAL_TOKEN',
 
   // apiURL: 'localhost:3000/api/shop'
-  apiURL: 'https://pistonsfuelpowerbackend-production.up.railway.app/api/shop'
+  apiURL: 'https://pistonsfuelpowerbackend-production.up.railway.app/api/shop',
+  shipstationURL: 'https://ssapi.shipstation.com',
+  shipAPI_KEY:'d7fdcd4e64bb442582689e083d4ecfbd',
+  shipAPI_SECRET:'400abb4e9b234e878cca4f9d046007ad'
 };
 
 /*

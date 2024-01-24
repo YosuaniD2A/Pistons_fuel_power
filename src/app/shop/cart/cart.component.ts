@@ -13,10 +13,15 @@ export class CartComponent implements OnInit {
   public products: Product[] = [];
 
   constructor(public productService: ProductService) {
-    this.productService.cartItems.subscribe(response => this.products = response);    
+     
   }
 
   ngOnInit(): void {
+    // this.productService.cartItems.subscribe(response => this.products = response);  
+    if(localStorage['cartItems'])
+      this.products = JSON.parse(localStorage['cartItems']);
+    else
+      this.products = [];
   }
 
   public get getTotal(): Observable<number> {

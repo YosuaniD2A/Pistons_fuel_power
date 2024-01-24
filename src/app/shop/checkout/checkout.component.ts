@@ -68,7 +68,7 @@ export class CheckoutComponent implements OnInit {
     //   description: 'Online Fashion Store',
     //   amount: this.amount * 100
     // }) 
-    this.orderService.createOrder(this.products, this.checkoutForm.value, this.amount);
+    this.orderService.createOrder(this.products, this.checkoutForm.value, this.orderIDGenerator(), this.amount);
     const response = await this.paymentService.checkoutStripe({
       products: this.products, 
       amount: this.amount, 
@@ -126,6 +126,25 @@ export class CheckoutComponent implements OnInit {
     //         console.log('onClick', data, actions);
     //     }
     // };
+  }
+
+  orderIDGenerator() {
+    const prefijo = 'PF-';
+    const fecha = new Date();
+  
+    // Obtenemos los componentes de la fecha
+    const year = fecha.getFullYear().toString().slice(-2);
+    const month = ('0' + (fecha.getMonth() + 1)).slice(-2);
+    const day = ('0' + fecha.getDate()).slice(-2);
+    const hours = ('0' + fecha.getHours()).slice(-2);
+    const minutes = ('0' + fecha.getMinutes()).slice(-2);
+    const seconds = ('0' + fecha.getSeconds()).slice(-2);
+    const milliseconds = ('00' + fecha.getMilliseconds()).slice(-3);
+  
+    // Construimos el código
+    const codigo = `${prefijo}${year}${month}${day}-${hours}${minutes}${seconds}${milliseconds}`;
+  
+    return codigo;
   }
 
 }
