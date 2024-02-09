@@ -16,6 +16,7 @@ import { ImageModule } from 'primeng/image';
 
 // Portfolio Components
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
+import { TrackingComponent } from './tracking/tracking.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonr
     ErrorComponent,
     FaqComponent,
     MasonryGridThreeComponent,
+    TrackingComponent,
   ],
   imports: [
     CommonModule,

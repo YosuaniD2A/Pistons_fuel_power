@@ -15,6 +15,9 @@ export class SettingsComponent implements OnInit {
 
   public products: Product[] = [];
   public search: boolean = false;
+  public track: boolean = false;
+  selectedOption: string = 'default';
+  placeholderText: string = 'Search...';
 
   public languages = [{
     name: 'English',
@@ -49,23 +52,52 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   searchToggle() {
     this.search = !this.search;
   }
 
-  handleKeyPress(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      const inputValue = (event.target as HTMLInputElement).value;
-      console.log(inputValue);
-      // Construye la URL con el parámetro de consulta
-      const rutaConQueryParam = '/shop';
-      const queryParams = { search: inputValue };
+  // trackToggle() {
+  //   this.track = !this.track;
+  // }
 
-      // Navega a la ruta con el parámetro de consulta
-      this.router.navigate([rutaConQueryParam], { queryParams: queryParams });
-      this.searchToggle();
+  updatePlaceholderText() {
+    if (this.selectedOption === 'products') {
+      this.placeholderText = 'Search Product';
+    } else if (this.selectedOption === 'tracking') {
+      this.placeholderText = 'Track your order, enter your order ID';
+    } else {
+      this.placeholderText = 'Search...';
+    }
+  }
+
+  handleKeyPress(event: KeyboardEvent) {
+    if (this.selectedOption === 'products') {
+      if (event.key === 'Enter') {
+        const inputValue = (event.target as HTMLInputElement).value;
+        console.log(inputValue);
+        // Construye la URL con el parámetro de consulta
+        const rutaConQueryParam = '/shop';
+        const queryParams = { search: inputValue };
+
+        // Navega a la ruta con el parámetro de consulta
+        this.router.navigate([rutaConQueryParam], { queryParams: queryParams });
+        this.searchToggle();
+      }
+    } else {
+      if (event.key === 'Enter') {
+        const inputValue = (event.target as HTMLInputElement).value;
+        console.log(inputValue);
+        // Construye la URL con el parámetro de consulta
+        const rutaConQueryParam = '/page/tracking';
+        const queryParams = { search: inputValue };
+
+        // Navega a la ruta con el parámetro de consulta
+        this.router.navigate([rutaConQueryParam], { queryParams: queryParams });
+        this.searchToggle();
+      }
     }
   }
 

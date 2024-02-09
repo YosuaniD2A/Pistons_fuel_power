@@ -1,0 +1,87 @@
+<app-breadcrumb [title]="'Tracking'" [breadcrumb]="'Tracking'"></app-breadcrumb>
+<section class="tracking-section section-b-space">
+    <div class="container">
+        <div class="row pb-4">
+            <div class="col-12 col-md-6">
+                <img src="../../../assets/images/2_people.png" width="100%" alt="delivery_image">
+            </div>
+            <div class="col-12 col-md-6 px-5 my-auto">
+                <div class="d-flex flex-column justify-content-between gap-4">
+                    <div>
+                        <p class="text_prev">Order Delivery Tracker</p>
+                        <div class="underline"></div>
+                    </div>
+                    <h2>Keep your online shoopping organized</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia voluptatibus enim qui, modi
+                        provident reprehenderit eos tempora ut? Accusantium excepturi beatae eos odio, nulla corrupti
+                        ipsa ex quos repudiandae nesciunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col-12 col-md-6">
+                <h3>Shipment Information</h3>
+                <div class="info-order row">
+                    <div class="col-6 info-right">
+                        <ul class="d-flex flex-column gap-1">
+                            <li><span class="fw-bold">Order ID: </span>1172074338</li>
+                            <li><span class="fw-bold">Shipping customer info.</span>
+                                <ul class="d-flex flex-column ps-4 py-2 gap-1">
+                                    <li><span class="fw-bold">Name: </span>Yosuani Borges Gonzalez</li>
+                                    <li><span class="fw-bold">Address: </span>Ave. Independecia #345</li>
+                                    <li><span class="fw-bold">City:</span> California</li>
+                                    <li><span class="fw-bold">Phone: </span>+123456789</li>
+                                </ul>
+                            </li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 info-left">
+                        <ul class="d-flex flex-column gap-1">
+                            <li><span class="fw-bold">Service: </span>usps_first_class_mail</li>
+                            <li><span class="fw-bold">Date of order: </span>23/01/2024</li>
+                            <li><span class="fw-bold">Shipped date: </span>31/01/2024</li>
+                            <!-- <li><span class="fw-bold">City:</span> California</li>
+                            <li><span class="fw-bold">Phone: </span>+123456789</li> -->
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 mt-4 info-track">
+                        <p class="mb-0">Tracking Number:</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <h3>9405511206217744219354</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-copy" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ship-detail col-12 col-md-6 ps-5">
+                <h3>Shipment Details</h3>
+                <div>
+                    <ul class="steps d-flex flex-column justify-content-center gap-1">
+                        <ng-container *ngFor="let status of statusList; let i = index">
+                            <li class="d-flex align-items-baseline gap-3"
+                                [class.disabled]="i < statusList.indexOf(statusActive)" *ngIf="status !== 'Cancelled' && status !== 'On_hold'">
+                                <div class="d-flex align-items-start justify-content-between gap-3">
+                                    <span class="date">'' ''</span>
+                                    <div class="pointer d-flex flex-column gap-1 align-items-center">
+                                        <div class="bubble" [class.active]="status == statusActive"></div>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                                <div class="description d-flex flex-column">
+                                    <h4 class="mb-0">{{status}}</h4>
+                                    <p>Lorem, ipsum dolor sit amet consectetur </p>
+                                </div>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

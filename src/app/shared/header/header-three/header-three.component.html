@@ -15,7 +15,8 @@
         <div class="col-lg-6 text-end">
           <ul class="header-dropdown">
             <li class="onhover-dropdown mobile-account">
-              <a href="https://pistons-fuel-power-dashboard.web.app/auth/login"><i class="fa fa-pie-chart" aria-hidden="true"></i> Dashboard</a>
+              <a href="https://pistons-fuel-power-dashboard.web.app/auth/login"><i class="fa fa-pie-chart"
+                  aria-hidden="true"></i> Dashboard</a>
             </li>
           </ul>
         </div>
@@ -38,23 +39,31 @@
             <img src="assets/images/icon/search.png" class="img-fluid" alt="" (click)="searchToggle()">
           </div>
           <div id="search-overlay" class="search-overlay" [ngStyle]="{'display': search ? 'block' : 'none' }">
-            <div> 
-                <span class="closebtn" title="Close Overlay" (click)="searchToggle()">×</span>
-                <div class="overlay-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <form>
-                                    <div class="form-group d-flex gap-2 align-items-center">
-                                        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="searchInput"
-                                        [ngModelOptions]="{standalone: true}" placeholder="Search a Product">
-                                        <img src="assets/images/icon/search.png" class="img-fluid" alt="" (click)="searchProd()" >
-                                      </div> 
-                                </form>
-                            </div>
+            <div>
+              <span class="closebtn" title="Close Overlay" (click)="searchToggle()">×</span>
+              <div class="overlay-content">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xl-12">
+                      <form>
+                        <div class="form-group d-flex flex-column gap-2 align-items-center">
+                          <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedOption"
+                            [ngModelOptions]="{standalone: true}" (change)="updatePlaceholderText()">
+                            <option value="default" selected disabled>Select search parameter</option>
+                            <option value="products">Products</option>
+                            <option value="tracking">Tracking</option>
+                          </select>
+                          <div class="col-12 form-group d-flex gap-2 align-items-center">
+                            <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="searchInput"
+                              [ngModelOptions]="{standalone: true}" [disabled]="selectedOption == 'default'" [placeholder]="placeholderText">
+                            <img src="assets/images/icon/search.png" class="img-fluid" [class.disabled]="disabled" alt="" (click)="searchGeneral()">
+                          </div>
                         </div>
+                      </form>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
           </div>
           <div class="menu-right pull-right">

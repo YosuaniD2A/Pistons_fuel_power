@@ -11,6 +11,10 @@
           [lazyLoad]="ImageSrc ? ImageSrc : product.images[0].img_url" 
           class="img-fluid lazy-loading" 
           alt="{{ product.images[0].alt }}" />
+          <!-- <img 
+          [src]="product.images[0].img_url"
+          class="img-fluid lazy-loading" 
+          alt="{{ product.images[0].alt }}" /> -->
       </a>
     </div>
     <div class="back bg-light p-3" *ngIf="onHowerChangeImage">

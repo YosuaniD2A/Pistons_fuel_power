@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BarRatingModule } from "ngx-bar-rating";
 import { LazyLoadImageModule } from 'ng-lazyload-image';
@@ -79,6 +80,7 @@ import { DiscountPipe } from './pipes/discount.pipe';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    NgbTooltipModule,
     CarouselModule,
     BarRatingModule,
     LazyLoadImageModule,

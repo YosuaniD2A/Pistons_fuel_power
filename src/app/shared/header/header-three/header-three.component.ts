@@ -17,6 +17,10 @@ export class HeaderThreeComponent implements OnInit {
   public search: boolean = false;
   searchInput: string = '';
 
+  selectedOption: string = 'default';
+  placeholderText: string = 'Search...';
+  disabled: boolean = true;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -37,14 +41,39 @@ export class HeaderThreeComponent implements OnInit {
     this.search = !this.search;
   }
 
-  searchProd() {
-    if(this.searchInput != ''){
-      const rutaConQueryParam = '/shop';
-      const queryParams = { search: this.searchInput };
-  
-      // Navega a la ruta con el parámetro de consulta
-      this.router.navigate([rutaConQueryParam], { queryParams: queryParams });
-      this.searchToggle();
+  updatePlaceholderText() {
+    if (this.selectedOption === 'products') {
+      this.placeholderText = 'Search Product';
+      this.disabled = false;
+    } else if (this.selectedOption === 'tracking') {
+      this.placeholderText = 'Track your order, enter your order ID';
+      this.disabled = false;
+    } else {
+      this.placeholderText = 'Search...';
+    }
+  }
+
+  searchGeneral() {
+    if (this.selectedOption === 'products') {
+      if (this.searchInput != '') {
+        // Construye la URL con el parámetro de consulta
+        const rutaConQueryParam = '/shop';
+        const queryParams = { search: this.searchInput };
+
+        // Navega a la ruta con el parámetro de consulta
+        this.router.navigate([rutaConQueryParam], { queryParams: queryParams });
+        this.searchToggle();
+      }
+    } else {
+      if (this.searchInput != '') {
+        // Construye la URL con el parámetro de consulta
+        const rutaConQueryParam = '/page/tracking';
+        const queryParams = { search: this.searchInput };
+
+        // Navega a la ruta con el parámetro de consulta
+        this.router.navigate([rutaConQueryParam], { queryParams: queryParams });
+        this.searchToggle();
+      }
     }
   }
 
