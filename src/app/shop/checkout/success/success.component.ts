@@ -54,7 +54,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
   }
 
   async createOrderForDatabase(orderDetails: Order, stripeRetrieve: any): Promise<void> {
-    const exist = await this.orderService.getByOrderId(orderDetails.orderId);
+    const exist = await this.orderService.getBySiteOrderId(orderDetails.orderId);
 
     try {
       if (exist.data.length == 0) {

@@ -50,6 +50,18 @@ export class OrderService {
     }
   }
 
+  public async getBySiteOrderId(site_order_id): Promise<any> {
+    try {
+      const response = await lastValueFrom(this.http.get<any>(`${environment.apiURL}/orders/getBySiteOrderId/${site_order_id}`));
+      return response;
+      
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al registrar la orden:', error);
+      throw error;
+    }
+  }
+
   public async getByOrderId(orderId): Promise<any> {
     try {
       const response = await lastValueFrom(this.http.get<any>(`${environment.apiURL}/orders/getByOrderId/${orderId}`));

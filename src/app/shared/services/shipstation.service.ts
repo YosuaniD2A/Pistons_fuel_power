@@ -10,19 +10,46 @@ import { Buffer } from 'buffer';
 })
 export class ShipstationService {
 
+  private headers: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Basic ${this.base64EncodeRFC2045(environment.shipAPI_KEY, environment.shipAPI_SECRET)}`
+  });
+
   constructor(private http: HttpClient) { }
 
   public async createOrder(orderData: ShipOrder): Promise<any> {
     try {
-      const headers: HttpHeaders = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Basic ${this.base64EncodeRFC2045(environment.shipAPI_KEY, environment.shipAPI_SECRET)}`
-      });
-      const response = await lastValueFrom(this.http.post<any>(`${environment.shipstationURL}/orders/createorder`, orderData, { headers }));
+      // const headers: HttpHeaders = new HttpHeaders({
+      //   'Content-Type': 'application/json',
+      //   'Authorization': `Basic ${this.base64EncodeRFC2045(environment.shipAPI_KEY, environment.shipAPI_SECRET)}`
+      // });
+      const response = await lastValueFrom(this.http.post<any>(`${environment.shipstationURL}/orders/createorder`, orderData, { headers: this.headers }));
       return response;
     } catch (error) {
       // Manejar errores aquí según tus necesidades
       console.error('Error al registrar la orden:', error);
+      throw error;
+    }
+  }
+
+  public async getOrder(orderId: string): Promise<any> {
+    try {
+      const response = await lastValueFrom(this.http.get<any>(`${environment.shipstationURL}/orders/${orderId}`, { headers: this.headers }));
+      return response;
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al obtener la orden:', error);
+      throw error;
+    }
+  }
+
+  public async getShipment(orderId: string): Promise<any> {
+    try {
+      const response = await lastValueFrom(this.http.get<any>(`${environment.shipstationURL}/shipments?orderId=${orderId}`, { headers: this.headers }));
+      return response;
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al obtener la orden:', error);
       throw error;
     }
   }

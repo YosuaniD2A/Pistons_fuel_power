@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 770px) {
-    .ship-detail{
+    .ship-detail {
         margin-top: 30px;
     }
 }
@@ -36,6 +36,7 @@
 
 .steps {
     min-height: 300px;
+
     li:last-child {
         .line {
             display: none;
@@ -59,7 +60,7 @@
 }
 
 .disabled {
-    .date {
+    .icon {
         color: #4f4f4f;
     }
 
@@ -73,17 +74,23 @@
         border: 2px solid #4d080220;
     }
 
-    .description{
-        h4,p{
+    .description {
+
+        h4,
+        p {
             color: #4f4f4f;
         }
     }
-
 }
 
-.date {
+.through {
+    text-decoration: line-through;
+    text-decoration-color: #4f4f4f;
+}
+
+.icon {
     white-space: nowrap;
-    width: auto;
+    min-width: 20px;
 }
 
 .line {
@@ -92,39 +99,70 @@
     border: 2px solid #c6140420;
 }
 
+.img-cancelled {
+    height: 100%;
+}
+
+.fade-out {
+	-webkit-animation: fade-out 2s ease-out both;
+	        animation: fade-out 2s ease-out both;
+}
+
 
 
 @-webkit-keyframes ping {
     0% {
-      -webkit-transform: scale(0.2);
-              transform: scale(0.2);
-      opacity: 0.8;
+        -webkit-transform: scale(0.2);
+        transform: scale(0.2);
+        opacity: 0.8;
     }
+
     80% {
-      -webkit-transform: scale(1.2);
-              transform: scale(1.2);
-      opacity: 0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: scale(2.2);
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+@keyframes ping {
+    0% {
+        -webkit-transform: scale(0.2);
+        transform: scale(0.2);
+        opacity: 0.8;
+    }
+
+    80% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: scale(2.2);
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fade-out {
+    0% {
+      opacity: 1;
     }
     100% {
-      -webkit-transform: scale(2.2);
-              transform: scale(2.2);
       opacity: 0;
     }
   }
-  @keyframes ping {
+  @keyframes fade-out {
     0% {
-      -webkit-transform: scale(0.2);
-              transform: scale(0.2);
-      opacity: 0.8;
-    }
-    80% {
-      -webkit-transform: scale(1.2);
-              transform: scale(1.2);
-      opacity: 0;
+      opacity: 1;
     }
     100% {
-      -webkit-transform: scale(2.2);
-              transform: scale(2.2);
       opacity: 0;
     }
   }

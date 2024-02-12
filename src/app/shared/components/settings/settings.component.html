@@ -16,7 +16,7 @@
                       <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedOption" [ngModelOptions]="{standalone: true}" (change)="updatePlaceholderText()">
                         <option value="default" selected disabled>Select search parameter</option>
                         <option value="products">Products</option>
-                        <option value="tracking">Tracking</option>
+                        <option value="tracking">Tracking order</option>
                       </select>
                       <input type="text" class="form-control" id="exampleInputPassword1" [disabled]="selectedOption == 'default'" [placeholder]="placeholderText"
                         (keydown)="handleKeyPress($event)">

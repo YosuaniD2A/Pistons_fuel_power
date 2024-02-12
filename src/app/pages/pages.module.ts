@@ -18,6 +18,8 @@ import { ImageModule } from 'primeng/image';
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
 import { TrackingComponent } from './tracking/tracking.component';
 
+import {RouterModule} from '@angular/router';
+
 @NgModule({
   declarations: [
     ContactComponent,
@@ -34,6 +36,7 @@ import { TrackingComponent } from './tracking/tracking.component';
     SharedModule,
     PagesRoutingModule,
     ImageModule,
+    RouterModule
   ]
 })
 export class PagesModule { }
