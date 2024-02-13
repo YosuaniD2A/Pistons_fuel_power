@@ -68,7 +68,6 @@ export class SuccessComponent implements OnInit, AfterViewInit {
             buyer: stripeRetrieve.customer_details.name,
             phone: stripeRetrieve.customer_details.phone,
             sku: item.sku,
-            // order_date: new Date(),
             order_total: orderDetails.totalAmount,
             proportional: item.price * item.quantity,
             quantity: item.quantity,
@@ -84,7 +83,6 @@ export class SuccessComponent implements OnInit, AfterViewInit {
             carrier: '',
             service_code: '',
             payment_id: stripeRetrieve.payment_intent,
-            // payment_date: new Date()
           }        
             const result = await this.orderService.registerOrder(orderItem);
         });

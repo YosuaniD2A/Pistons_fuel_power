@@ -57,7 +57,7 @@ export class OrderService {
       
     } catch (error) {
       // Manejar errores aquí según tus necesidades
-      console.error('Error al registrar la orden:', error);
+      console.error('Error al obtener la orden por site_order_id:', error);
       throw error;
     }
   }
@@ -69,7 +69,31 @@ export class OrderService {
       
     } catch (error) {
       // Manejar errores aquí según tus necesidades
-      console.error('Error al registrar la orden:', error);
+      console.error('Error al obtener la orden por order_id:', error);
+      throw error;
+    }
+  }
+
+  public async getAllOrderId(): Promise<any> {
+    try {
+      const response = await lastValueFrom(this.http.get<any>(`${environment.apiURL}/orders/getAllOrderId`));
+      return response;
+      
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al obtener todas la ordenes:', error);
+      throw error;
+    }
+  }
+
+  public async updateOrder(data, id): Promise<any> {
+    try {
+      const response = await lastValueFrom(this.http.patch<any>(`${environment.apiURL}/orders/updateOrder/${id}`, data));
+      return response;
+      
+    } catch (error) {
+      // Manejar errores aquí según tus necesidades
+      console.error('Error al obtener todas la ordenes:', error);
       throw error;
     }
   }

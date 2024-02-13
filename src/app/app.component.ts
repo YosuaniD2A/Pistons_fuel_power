@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { map, delay, withLatestFrom } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { AutotaskService } from './shared/services/autotask.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,9 @@ export class AppComponent {
   );
   
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
-    private loader: LoadingBarService, translate: TranslateService) {
+    private loader: LoadingBarService, translate: TranslateService, private autotaskService: AutotaskService ) {
+
+    this.autotaskService.updateOrderStatus();
       
     document.body.classList.toggle('dark')
 
