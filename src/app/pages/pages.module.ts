@@ -18,7 +18,12 @@ import { ImageModule } from 'primeng/image';
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
 import { TrackingComponent } from './tracking/tracking.component';
 
+import { DockModule } from 'primeng/dock';
+import { CardModule } from 'primeng/card';
+import { CarouselModule } from 'primeng/carousel';
+
 import {RouterModule} from '@angular/router';
+import { InfluencersComponent } from './influencers/influencers.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,7 @@ import {RouterModule} from '@angular/router';
     FaqComponent,
     MasonryGridThreeComponent,
     TrackingComponent,
+    InfluencersComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +42,9 @@ import {RouterModule} from '@angular/router';
     SharedModule,
     PagesRoutingModule,
     ImageModule,
+    DockModule,
+    CardModule,
+    CarouselModule,
     RouterModule
   ]
 })

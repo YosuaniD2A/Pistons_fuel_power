@@ -59,6 +59,8 @@ export class TrackingComponent implements OnInit, AfterViewInit {
         this.notFound = false;
         this.order = orderInfo;
         this.statusActive = orderInfo.orderStatus;
+        console.log(orderInfo);
+        
 
         this.statusList.map(elem => {
           if (elem.status === 'paid')

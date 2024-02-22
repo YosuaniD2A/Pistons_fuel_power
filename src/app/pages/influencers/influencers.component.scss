@@ -1,0 +1,75 @@
+.main-section {
+    @media (max-width: 577px) {
+        .underline {
+            margin: 0 auto;
+        }
+
+        .title-text {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+}
+
+.section-steps {
+    padding: 70px 0;
+    background-color: #232323;
+
+    .card-deal {
+        transition: all 0.5s ease;
+        /* Transición suave para todas las propiedades */
+    }
+
+    .card-deal:hover {
+        h3 {
+            font-size: 26px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    }
+}
+
+.section-join {
+    background-image: url('../../../assets/images/city-car.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    .text-body {
+        color: #cfd4da !important;
+        width: 50%;
+    }
+
+    @media (max-width: 577px) {
+        padding-bottom: 30px;
+
+        .text-body {
+            width: 90%;
+        }
+    }
+}
+
+.layer-blur {
+    padding: 70px 0px;
+    backdrop-filter: blur(4px);
+    /* Ajusta el valor de desenfoque según tus preferencias */
+    background-color: rgba(251, 250, 250, 0.151);
+    /* Ajusta el color de fondo y la opacidad según tus preferencias */
+}
+
+.underline {
+    width: 130px;
+    height: 10px;
+    border-top: 3px solid #C61504;
+}
+
+.card-deal {
+    max-width: 320px;
+}
+
+
+

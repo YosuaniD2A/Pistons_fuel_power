@@ -1,0 +1,54 @@
+<app-breadcrumb [title]="'Influencers program'" [breadcrumb]="'Influencers'"></app-breadcrumb>
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5">
+                <img src="assets/images/influencer1.png" width="100%" alt="">
+            </div>
+            <div class="title-text col-12 col-md-7 d-flex flex-column gap-5 justify-content-center">
+                <div>
+                    <h2 class="title">Pistons Fuel Power Influencer Affiliate Program</h2>
+                    <div class="underline"></div>
+                    <p>We don't just admire cars and bikes; we live them. Here, muscle cars, luxury autos, and
+                        motorcycles aren't just vehicles; they're a statement. And we've got the gear to match - over
+                        200 high-quality T-shirt designs for those who know that life's too short to drive boring cars.
+                    </p>
+                </div>
+                <div class="">
+                    <h2>What drive us</h2>
+                    <div class="underline"></div>
+                    <p>WIt's simple. We want to bring the soul of the garage into everyday life, offering graphic tees
+                        that do more than just look good; they tell a story, creating a vibe that resonates with the
+                        community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-steps">
+    <div class="">
+        <div class=" d-flex flex-column align-items-center gap-5 justify-content-center">
+            <h2>Here’s the Deal</h2>
+            <ul class="d-flex flex-wrap gap-5 justify-content-center align-items-start">
+                <li *ngFor="let item of items" class="px-4">
+                    <div class="card-deal">
+                        <h3>{{item.title}}</h3>
+                        <p class="m-0">
+                            {{item.body}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="section-join">
+    <div class="layer-blur d-flex flex-column align-items-center justify-content-center">
+        <h2 class="text-center">Thinking of Joining the Pistons Fuel Power Ride?</h2>
+        <p class="text-body fs-5 text-center">If your life is one long ride and your followers are along for the journey,
+            looking to you for what's next in
+            the world of cars and bikes, then it's time.</p>
+        <button type="button" class="btn btn-solid">Let's link up</button>
+    </div>
+</section>

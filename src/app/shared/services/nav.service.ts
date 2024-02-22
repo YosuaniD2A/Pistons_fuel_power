@@ -50,6 +50,9 @@ export class NavService {
 			title: 'About us', type: 'link', active: false, path: '/page/aboutus'
 		},
 		{
+			title: 'Influencers program', type: 'link', active: false, path: '/page/influencers-program'
+		},
+		{
 			title: 'FAQ', type: 'link', active: false, path: '/page/faq'
 		}
 	];
@@ -66,6 +69,9 @@ export class NavService {
 		// },
 		{
 			title: 'About us', type: 'link', active: false, path: '/page/aboutus'
+		},
+		{
+			title: 'Influencers program', type: 'link', active: false, path: '/page/influencers-program'
 		},
 		{
 			title: 'FAQ', type: 'link', active: false, path: '/page/faq'
