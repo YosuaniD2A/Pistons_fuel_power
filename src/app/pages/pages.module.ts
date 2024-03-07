@@ -21,9 +21,14 @@ import { TrackingComponent } from './tracking/tracking.component';
 import { DockModule } from 'primeng/dock';
 import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
+import { TabViewModule } from 'primeng/tabview';
+import { ChartModule } from 'primeng/chart';
+import { DividerModule } from 'primeng/divider';
 
 import {RouterModule} from '@angular/router';
 import { InfluencersComponent } from './influencers/influencers.component';
+import { InfluencerDashComponent } from './influencer-dash/influencer-dash.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { InfluencersComponent } from './influencers/influencers.component';
     MasonryGridThreeComponent,
     TrackingComponent,
     InfluencersComponent,
+    InfluencerDashComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +49,9 @@ import { InfluencersComponent } from './influencers/influencers.component';
     PagesRoutingModule,
     ImageModule,
     DockModule,
+    ChartModule,
+    DividerModule,
+    TabViewModule,
     CardModule,
     CarouselModule,
     RouterModule

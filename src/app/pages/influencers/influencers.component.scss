@@ -12,10 +12,10 @@
     }
 }
 
-.section-program{
+.section-program {
     background-color: #232323;
-    
-    .container_80{
+
+    .container_80 {
         padding: 70px 0px 50px;
         width: 80%;
         margin: 0 auto;
@@ -45,7 +45,7 @@
 }
 
 .section-join {
-    background-image: url('../../../assets/images/city-car.jpg');
+    background-image: url('../../../assets/images/city-car1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -83,5 +83,63 @@
     max-width: 320px;
 }
 
+.btn-primary {
+    background-color: #C61504 !important;
+    border: 1px #C61504;
+    padding: 13px 29px;
 
+    &:hover {
+        background-color: #c07069 !important;
+    }
+}
 
+.buttonBox {
+    // margin: 0 20px 40px;
+    position: relative;
+    width: 100%;
+    // max-width: 200px;
+    // min-width: 150px;
+    flex: 20%;
+
+}
+
+#fifth {
+    overflow: hidden;
+    padding: 13px 29px;
+    background-color: #C61504;
+    border: 1px solid #C61504;
+    color: #cfd4da;
+    transition: all .4s ease-in-out;
+}
+
+#fifth:before {
+    content: " ";
+    display: block;
+    width: 200px;
+    height: 80px;
+    background: rgba(255, 255, 255, .4);
+    position: absolute;
+    top: -10px;
+    left: -200px;
+    transform: rotate(-45deg);
+    transition: all .4s ease-in-out;
+}
+
+#fifth:hover:before {
+    margin-left: 300%;
+}
+
+#fifth:hover {
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+
+    &:hover{
+        cursor: pointer;
+        color: #787878;
+    }
+}

@@ -1,11 +1,11 @@
 <app-breadcrumb [title]="'Influencers program'" [breadcrumb]="'Influencers'"></app-breadcrumb>
 <section class="main-section">
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-5">
-                <img src="assets/images/influencer1.png" width="100%" alt="">
+        <div class="row py-5">
+            <div class="col-12 col-md-6">
+                <img src="assets/images/green _car3.png" width="100%" alt="">
             </div>
-            <div class="title-text col-12 col-md-7 d-flex flex-column gap-5 justify-content-center">
+            <div class="title-text col-12 col-md-6 d-flex flex-column gap-5 justify-content-center">
                 <div>
                     <h2 class="title">Pistons Fuel Power Influencer Affiliate Program</h2>
                     <div class="underline"></div>
@@ -22,9 +22,43 @@
                         community.
                     </p>
                 </div>
+                <div>
+                    <button type="button" class="btn btn-solid" (click)="open(content)">Go profile</button>
+                </div>
             </div>
         </div>
     </div>
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-body py-5">
+            <span class="close-btn" (click)="d('Cross click')">X</span>
+            <form class="" action="">
+                <div class="d-flex flex-column gap-3">
+                    <div class="text-center">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="form-group mx-sm-3">
+                        <input type="email" name="email" id="sign-email" class="form-control"
+                            placeholder="Enter your email">
+                    </div>
+                    <div class="form-group mx-sm-3">
+                        <input type="password" name="password" id="sign-password" class="form-control"
+                            placeholder="Enter your password">
+                    </div>
+                    <div class="px-3">
+                        <button type="submit" (click)="signIn()" id="fifth" class="btn buttonBox" style="width: 100%;">sign in</button>
+                    </div>
+                    <div class="d-flex justify-content-between px-3">
+                        <a href="#">Forget password</a>
+                        <a href="#">Join us</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+        </div> -->
+    </ng-template>
 </section>
 <section class="section-program">
     <div class="container_80">

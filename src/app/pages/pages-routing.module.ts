@@ -8,6 +8,7 @@ import { FaqComponent } from './faq/faq.component';
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
 import { TrackingComponent } from './tracking/tracking.component';
 import { InfluencersComponent } from './influencers/influencers.component';
+import { InfluencerDashComponent } from './influencer-dash/influencer-dash.component';
 
 const routes: Routes = [
   { 
@@ -21,6 +22,10 @@ const routes: Routes = [
   { 
     path: 'influencers-program', 
     component: InfluencersComponent 
+  },
+  { 
+    path: 'influencers-dash', 
+    component: InfluencerDashComponent 
   },
   { 
     path: 'aboutus', 
