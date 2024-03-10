@@ -67,13 +67,14 @@
                     </div>
                     <div class="total-sec">
                         <ul>
-                            <li>Subtotal <span>{{ orderDetails.totalAmount | currency:productService?.Currency.currency:'symbol' }}</span></li>
-                            <li>Shipping <span>$00.00</span></li>
-                            <li>Tax <span>$00.00</span></li>
+                            <li>Subtotal <span>{{ subTotal | currency:productService?.Currency.currency:'symbol' }}</span></li>
+                            <li>Discount <span class="discount">{{ discount | currency:productService?.Currency.currency:'symbol' }}</span></li>
+                            <li>Shipping <span>{{ shipping | currency:productService?.Currency.currency:'symbol' }}</span></li>
+                            <li>Tax <span>{{ tax | currency:productService?.Currency.currency:'symbol' }}</span></li>
                         </ul>
                     </div>
                     <div class="final-total">
-                        <h3>total <span>{{ orderDetails.totalAmount | currency:productService?.Currency.currency:'symbol' }}</span></h3>
+                        <h3>total <span>{{ total | currency:productService?.Currency.currency:'symbol' }}</span></h3>
                     </div>
                 </div>
             </div>

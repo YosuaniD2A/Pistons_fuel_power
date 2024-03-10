@@ -9,6 +9,7 @@ import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonr
 import { TrackingComponent } from './tracking/tracking.component';
 import { InfluencersComponent } from './influencers/influencers.component';
 import { InfluencerDashComponent } from './influencer-dash/influencer-dash.component';
+import { influencersGuard } from '../guards/influencers.guard';
 
 const routes: Routes = [
   { 
@@ -24,7 +25,7 @@ const routes: Routes = [
     component: InfluencersComponent 
   },
   { 
-    path: 'influencers-dash', 
+    path: 'influencers-dash', canActivate: [influencersGuard], 
     component: InfluencerDashComponent 
   },
   { 

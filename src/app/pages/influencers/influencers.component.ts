@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { privateDecrypt } from 'crypto';
+import { InfluencersService } from 'src/app/shared/services/influencers.service';
 
 @Component({
   selector: 'app-influencers',
@@ -11,14 +14,23 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 export class InfluencersComponent implements OnInit {
 
   items: any[];
+  message: string = '';
+  public login:  UntypedFormGroup;
 
   constructor(
+    private fb: UntypedFormBuilder,
 		config: NgbModalConfig,
 		private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private influencersService: InfluencersService
 	) {
 		config.backdrop = 'static';
 		config.keyboard = false;
+
+    this.login = this.fb.group({
+      emailOrCode: ['', [Validators.required]],
+      password: ['', Validators.required],
+    })
 	}
 
   ngOnInit() {
@@ -43,11 +55,49 @@ export class InfluencersComponent implements OnInit {
     ];
   }
 
+  async loginProcess() {
+    this.message = '';
+    const data: any = this.login.value;
+    
+    try {
+      if(data.emailOrCode === '' || data.password === '')
+      {
+        this.message = 'Do not leave empty fields';
+        // alert('Do not leave empty fields')
+        return;
+      }
+
+      let resp = await this.influencersService.login(data);
+      
+      localStorage.setItem('influencerId', resp.influencer.id);
+      localStorage.setItem('influencerToken', resp.token);
+
+      this.router.navigateByUrl('/page/influencers-dash');
+      this.modalService.dismissAll('Cross click');
+
+    } catch (error: any) {
+      if(error.error){
+        this.message = error.error.msg;
+        console.error(error.error.msg); 
+      }else{
+        console.error(error.message); 
+        alert(error.message)
+      }
+
+    }
+  }
+
   open(content) {
-		this.modalService.open(content, { size: 'md', centered: true });
+    if(localStorage.getItem('influencerToken')){
+      this.router.navigateByUrl('/page/influencers-dash')
+    }else{
+      this.modalService.open(content, { size: 'md', centered: true });
+    }
 	}
 
   signIn(){
+    console.log(this.login.value);
+    
     this.router.navigateByUrl('/page/influencers-dash')
     this.modalService.dismissAll('Cross click');
   }

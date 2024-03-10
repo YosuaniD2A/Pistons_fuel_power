@@ -63,7 +63,8 @@ export interface ShipOrder {
         provider: string,
         insureShipment: boolean,
         insuredValue: number
-    }
+    },
+    advancedOptions?: any
 }
 
 export interface Item {

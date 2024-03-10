@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-influencer-dash',
@@ -16,7 +17,7 @@ export class InfluencerDashComponent implements OnInit {
   data: any;
   options: any;
 
-  constructor(private formBuilder: UntypedFormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder, private router: Router) {
     this.createAccountForm();
   }
 
@@ -25,61 +26,67 @@ export class InfluencerDashComponent implements OnInit {
     const textColor = documentStyle.getPropertyValue('--bs-white');
     const textColorSecondary = documentStyle.getPropertyValue('--bs-white');
     const surfaceBorder = documentStyle.getPropertyValue('--bs-gray');
-    
+
     this.data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        datasets: [
-            {
-                label: 'Sales',
-                backgroundColor: documentStyle.getPropertyValue('--bs-blue'),
-                borderColor: documentStyle.getPropertyValue('--bs-blue'),
-                data: [18, 55, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            },
-            // {
-            //     label: 'My Second dataset',
-            //     backgroundColor: documentStyle.getPropertyValue('--theme-deafult'),
-            //     borderColor: documentStyle.getPropertyValue('--theme-deafult'),
-            //     data: [28, 48, 40, 19, 86, 27, 90]
-            // }
-        ]
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      datasets: [
+        {
+          label: 'Sales',
+          backgroundColor: documentStyle.getPropertyValue('--bs-blue'),
+          borderColor: documentStyle.getPropertyValue('--bs-blue'),
+          data: [18, 55, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        // {
+        //     label: 'My Second dataset',
+        //     backgroundColor: documentStyle.getPropertyValue('--theme-deafult'),
+        //     borderColor: documentStyle.getPropertyValue('--theme-deafult'),
+        //     data: [28, 48, 40, 19, 86, 27, 90]
+        // }
+      ]
     };
 
     this.options = {
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: textColorSecondary,
-                    font: {
-                        weight: 100
-                    }
-                },
-                grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
-                }
-            },
-            y: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
-                }
-            }
-
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
+      plugins: {
+        legend: {
+          labels: {
+            color: textColor
+          }
         }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: textColorSecondary,
+            font: {
+              weight: 100
+            }
+          },
+          grid: {
+            color: surfaceBorder,
+            drawBorder: false
+          }
+        },
+        y: {
+          ticks: {
+            color: textColorSecondary
+          },
+          grid: {
+            color: surfaceBorder,
+            drawBorder: false
+          }
+        }
+
+      }
     };
-}
+  }
+
+  logout(){
+    localStorage.removeItem('influencerToken');
+    localStorage.removeItem('influencerId');
+    this.router.navigateByUrl('/page/influencers-program')
+  }
 
   setActiveTab(tab: string) {
     this.activeTab = tab;
@@ -88,7 +95,7 @@ export class InfluencerDashComponent implements OnInit {
   createAccountForm() {
     this.accountForm = this.formBuilder.group({
       fullname: ['', Validators.required],
-      email: ['',[Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       discount_percent: ['', Validators.required],
       password: [''],
       confPassword: [''],
@@ -100,9 +107,9 @@ export class InfluencerDashComponent implements OnInit {
     });
   }
 
-  saveUser(accountForm: any){}
+  saveUser(accountForm: any) { }
 
-  enableEdition(){
+  enableEdition() {
     this.editInfo = !this.editInfo;
   }
 }

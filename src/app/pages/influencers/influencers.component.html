@@ -37,15 +37,16 @@
                         <h3>Login</h3>
                     </div>
                     <div class="form-group mx-sm-3">
-                        <input type="email" name="email" id="sign-email" class="form-control"
-                            placeholder="Enter your email">
+                        <input type="text" name="emailOrCode" id="sign-email" class="form-control"
+                        [formControl]="login.controls['emailOrCode']" placeholder="Enter your email or Code">
                     </div>
                     <div class="form-group mx-sm-3">
                         <input type="password" name="password" id="sign-password" class="form-control"
-                            placeholder="Enter your password">
+                        [formControl]="login.controls['password']" placeholder="Enter your password">
                     </div>
+                    <span class="px-3 text-danger" *ngIf="message !== '' ">{{ message }}</span>
                     <div class="px-3">
-                        <button type="submit" (click)="signIn()" id="fifth" class="btn buttonBox" style="width: 100%;">sign in</button>
+                        <button type="submit" (click)="loginProcess()" id="fifth" class="btn buttonBox" style="width: 100%;">sign in</button>
                     </div>
                     <div class="d-flex justify-content-between px-3">
                         <a href="#">Forget password</a>

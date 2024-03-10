@@ -7,6 +7,7 @@
                     <p class="title-dash"><strong>DASHBOARD</strong></p>
                     <li [ngClass]="{ 'active': activeTab === 'orders' }" (click)="setActiveTab('orders')"><i class="fa fa-bar-chart fa-fw me-2"></i>Orders status</li>
                     <li [ngClass]="{ 'active': activeTab === 'profile' }" (click)="setActiveTab('profile')"><i class="fa fa-user fa-fw me-2"></i>Profile</li>
+                    <li class="" (click)="logout()"><i class="fa fa-sign-out fa-fw me-2"></i>Logout</li>
                 </ul>
             </nav>
             <div class="dash-main">
@@ -226,7 +227,6 @@
                                 <h4>date of request: <span class="fw-bold">March 15, 2024</span></h4>
                                 <h4>requested amount: <span class="fw-bold text-success">$450.00</span></h4>
                                 <h4>status: <span class="fw-bold text-warning">Pending</span></h4>
-                                <h4>target account: <span class="fw-bold text-secondary">xxxx-xxxx-xxxx-1234</span></h4>
                                 <h4>transfer ID: <span class="fw-bold text-secondary">Unknown</span></h4>
                             </div>
                         </div>

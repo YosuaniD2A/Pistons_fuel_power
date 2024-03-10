@@ -8,6 +8,7 @@ import { ProductService } from "../../shared/services/product.service";
 import { OrderService } from "../../shared/services/order.service";
 import { PaymentService } from 'src/app/shared/services/payment.service';
 import { Router } from '@angular/router';
+import { InfluencersService } from 'src/app/shared/services/influencers.service';
 
 @Component({
   selector: 'app-checkout',
@@ -21,10 +22,12 @@ export class CheckoutComponent implements OnInit {
   // public payPalConfig ? : IPayPalConfig;
   public payment: string = 'Stripe';
   public amount:  any;
+  public discount: number = 0;
 
   constructor(private fb: UntypedFormBuilder,
     public productService: ProductService,
     private orderService: OrderService,
+    private influencersService: InfluencersService,
     private paymentService: PaymentService,
     private router: Router) { 
     this.checkoutForm = this.fb.group({
@@ -42,37 +45,43 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.cartItems.subscribe(response => this.products = response);
-    this.getTotal.subscribe(amount => this.amount = amount);
-    this.initConfig();
-    console.log(this.products);
-    
+    this.getSubTotal.subscribe(amount => this.amount = amount);
+    this.initConfig();    
   }
 
-  public get getTotal(): Observable<number> {
+  public get getSubTotal(): Observable<number> {
     return this.productService.cartTotalAmount();
+  }
+
+  public getTotal() {
+    return this.amount + this.discount;
+  }
+
+  async applyDiscount(){
+    try {
+      if(this.checkoutForm.value.promotionalcode !== ''){
+        const exist = await this.influencersService.getCodeDescount(this.checkoutForm.value.promotionalcode);
+        
+        if(exist.discount.length !== 0){
+          this.getSubTotal.subscribe( total => {
+            this.discount =  -((total * exist.discount[0].discount_percent)/100)
+          })
+        }
+      }    
+      
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   // Stripe Payment Gateway
   async stripeCheckout() {
-    // var handler = (<any>window).StripeCheckout.configure({
-    //   key: environment.stripe_token, // publishble key
-    //   locale: 'auto',
-    //   token: (token: any) => {
-    //     // You can access the token ID with `token.id`.
-    //     // Get the token ID to your server-side code for use.
-    //     this.orderService.createOrder(this.products, this.checkoutForm.value, token.id, this.amount);
-    //   }
-    // });
-    // handler.open({
-    //   name: 'Pistons Fuel Power',
-    //   description: 'Online Fashion Store',
-    //   amount: this.amount * 100
-    // }) 
     this.orderService.createOrder(this.products, this.checkoutForm.value, this.orderIDGenerator(), this.amount);
+
     const response = await this.paymentService.checkoutStripe({
       products: this.products, 
       amount: this.amount, 
-      shippingDetails: this.checkoutForm.value
+      shippingDetails: this.checkoutForm.value,
     });
     window.location.href = response.url;
     

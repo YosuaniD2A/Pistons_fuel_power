@@ -18,6 +18,12 @@ export class SuccessComponent implements OnInit, AfterViewInit {
   public payment_ID: string = '';
   public order_id: string = '';
 
+  public subTotal: number = 0;
+  public discount: number = 0;
+  public shipping: number = 0;
+  public tax: number = 0;
+  public total: number = 0;
+
   constructor(
     public productService: ProductService,
     private orderService: OrderService,
@@ -32,18 +38,24 @@ export class SuccessComponent implements OnInit, AfterViewInit {
     this.cleanCart();
 
     this.route.params.subscribe(async (params) => {
-      const stripeRetrieve = await this.paymentService.retrieveSession(params['id'])
-      this.payment_ID = stripeRetrieve.payment_intent;
+      const stripeRetrieve = await this.paymentService.retrieveSession(params['id']);
+      
+      this.payment_ID = stripeRetrieve.retrieve.payment_intent;
+      this.subTotal = stripeRetrieve.retrieve.amount_subtotal / 100;
+      this.discount = - stripeRetrieve.retrieve.total_details.amount_discount / 100;
+      this.shipping = stripeRetrieve.retrieve.total_details.amount_shipping / 100;
+      this.tax = stripeRetrieve.retrieve.total_details.amount_tax / 100;
+      this.total = stripeRetrieve.retrieve.amount_total / 100;
 
-      this.createOrderForDatabase(this.orderDetails, stripeRetrieve);
+      
+      
+      this.createOrderForDatabase(this.orderDetails, stripeRetrieve.promotionCode, stripeRetrieve.retrieve);
 
     });
 
   }
 
-  ngAfterViewInit() {
-
-  }
+  ngAfterViewInit() { }
 
   cleanCart(){
     const items = JSON.parse(localStorage.getItem("cartItems"));
@@ -53,7 +65,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
     }
   }
 
-  async createOrderForDatabase(orderDetails: Order, stripeRetrieve: any): Promise<void> {
+  async createOrderForDatabase(orderDetails: Order, promotionCode: string ,stripeRetrieve: any): Promise<void> {
     const exist = await this.orderService.getBySiteOrderId(orderDetails.orderId);
 
     try {
@@ -81,6 +93,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
             shipping_country: orderDetails.shippingDetails.country,
             tracking_number: '',
             carrier: '',
+            promotional_code: promotionCode,
             service_code: '',
             payment_id: stripeRetrieve.payment_intent,
           }        
@@ -119,7 +132,10 @@ export class SuccessComponent implements OnInit, AfterViewInit {
         country: orderDetails.shippingDetails.country,
         phone: orderDetails.shippingDetails.phone,
       },
-      items: this.productsGenerator(orderDetails.products)
+      items: this.productsGenerator(orderDetails.products),
+      advancedOptions: {
+        source: 'Pistons Fuel Power'
+      }
     }    
 
     try {
