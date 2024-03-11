@@ -57,22 +57,22 @@ export class CheckoutComponent implements OnInit {
     return this.amount + this.discount;
   }
 
-  async applyDiscount(){
-    try {
-      if(this.checkoutForm.value.promotionalcode !== ''){
-        const exist = await this.influencersService.getCodeDescount(this.checkoutForm.value.promotionalcode);
+  // async applyDiscount(){
+  //   try {
+  //     if(this.checkoutForm.value.promotionalcode !== ''){
+  //       const exist = await this.influencersService.getCodeDescount(this.checkoutForm.value.promotionalcode);
         
-        if(exist.discount.length !== 0){
-          this.getSubTotal.subscribe( total => {
-            this.discount =  -((total * exist.discount[0].discount_percent)/100)
-          })
-        }
-      }    
+  //       if(exist.discount.length !== 0){
+  //         this.getSubTotal.subscribe( total => {
+  //           this.discount =  -((total * exist.discount[0].discount_percent)/100)
+  //         })
+  //       }
+  //     }    
       
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // }
 
   // Stripe Payment Gateway
   async stripeCheckout() {
