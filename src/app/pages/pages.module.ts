@@ -24,6 +24,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { TabViewModule } from 'primeng/tabview';
 import { ChartModule } from 'primeng/chart';
 import { DividerModule } from 'primeng/divider';
+import { ToastModule } from 'primeng/toast';
 
 import {RouterModule} from '@angular/router';
 import { InfluencersComponent } from './influencers/influencers.component';
@@ -52,6 +53,7 @@ import { InfluencerDashComponent } from './influencer-dash/influencer-dash.compo
     ChartModule,
     DividerModule,
     TabViewModule,
+    ToastModule,
     CardModule,
     CarouselModule,
     RouterModule
