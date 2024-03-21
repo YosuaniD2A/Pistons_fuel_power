@@ -37,6 +37,7 @@ export interface Images {
     src?: string;
     variant_id?: any[];
     img_url?: string;
+    img_url2?: string;
     variants_id?: number;
     images_id?: number;
 }

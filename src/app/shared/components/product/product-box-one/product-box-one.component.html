@@ -8,7 +8,7 @@
       <a [routerLink]="getProductRoute(product)">
         <img 
           [defaultImage]="ImageSrc ? ImageSrc : 'assets/images/product/placeholder.jpg'" 
-          [lazyLoad]="ImageSrc ? ImageSrc : product.images[0]?.img_url" 
+          [lazyLoad]="ImageSrc ? ImageSrc : product.images[0]?.img_url2" 
           class="img-fluid lazy-loading" 
           alt="{{ product.title }} Front" />
           <!-- <img 
@@ -19,7 +19,7 @@
     </div>
     <div class="back bg-light p-3" *ngIf="onHowerChangeImage">
       <a [routerLink]="getProductRoute(product)">
-        <img [src]="ImageSrc ? ImageSrc : product.images[1]?.img_url" class="img-fluid lazy-loading" alt="{{ product.title }} Back">
+        <img [src]="ImageSrc ? ImageSrc : product.images[1]?.img_url2" class="img-fluid lazy-loading" alt="{{ product.title }} Back">
       </a>
     </div>
     <!-- <ul class="product-thumb-list" *ngIf="thumbnail">

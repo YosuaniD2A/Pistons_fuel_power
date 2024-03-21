@@ -42,9 +42,9 @@ export class InfluencerDashComponent implements OnInit {
   constructor(private router: Router, private influencerService: InfluencersService, private messageService: MessageService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.activeInfluencer = parseInt(localStorage.getItem('influencerId'));
-    this.loadInfluencerData()
+    await this.loadInfluencerData()
 
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--bs-white');
@@ -116,7 +116,7 @@ export class InfluencerDashComponent implements OnInit {
     const { orders } = await this.influencerService.getAllOrdersWithMyCode(this.influencerData.discount_code);
     this.ordersByMonths = orders.map(order => {
       return order.order_count;
-    });
+    });    
 
     const currentMonth = new Date().getMonth() + 1;
     this.monthlySales = orders.find(order => {
@@ -127,9 +127,7 @@ export class InfluencerDashComponent implements OnInit {
 
     const respRequests = await this.influencerService.getRequests(this.influencerData.id);
     this.influencerRequests = respRequests.data;
-    this.lastRequest = respRequests.data[respRequests.data.length -1];
-    console.log(this.lastRequest);
-    
+    this.lastRequest = respRequests.data[respRequests.data.length -1]; 
 
   }
 

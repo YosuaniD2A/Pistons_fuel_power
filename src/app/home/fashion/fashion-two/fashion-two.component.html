@@ -36,19 +36,19 @@
         <div class="gallery-section container-2">
             <div class="container_img">
                 <div *ngFor="let image of Images; let i = index" (mouseenter)="switchOverlay(i, true)"
-                    (mouseleave)="switchOverlay(i, false)">
+                    (mouseleave)="switchOverlay(i, false)" (click)="openModal(image)">
                     <div class="overlay" *ngIf="showOverlay[i]">
                         <button class="btn-goshop rounded-pill" (click)="goShop(image)">Go shop</button>
-                        <button class="btn-see rounded-circle" (click)=" openModal(image)">
+                        <!-- <button class="btn-see rounded-circle" (click)=" openModal(image)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-three-dots" viewBox="0 0 16 16">
                                 <path
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                             </svg>
-                        </button>
+                        </button> -->
                     </div>
                     <a href="javascript:void(0)">
-                        <img [src]="image.img_url" (load)="handleOnLoadImage()" class="img-fluid lazy-loading" alt="" />
+                        <img [src]="image.img_url2" (load)="handleOnLoadImage()" class="img-fluid lazy-loading" alt="" />
                     </a>
                 </div>
             </div>
